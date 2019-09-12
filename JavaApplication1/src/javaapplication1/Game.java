@@ -26,12 +26,14 @@ public class Game {
            
                 System.out.format("%6d%6d%6d%6d%n",x[0],x[1],x[2],x[3]);
                                }
+        System.out.format("%n");
         
     }
     
     public void addNewNumbers()
     {
-        ArrayList<Integer> emptySpaces = new ArrayList();
+        ArrayList<Integer> emptySpacesX = new ArrayList();
+        ArrayList<Integer> emptySpacesY = new ArrayList();
        for(int x=0;x<4;x++)
        {
            for(int y=0;y<4;y++)
@@ -39,21 +41,22 @@ public class Game {
                if(gameBoard[x][y] == 0)
                {
                    int[] c = {x,y};
-                   emptySpaces.add(c); //adicionando os espacos vazios 
-                 
+                   emptySpacesX.add(x); //adicionando os espacos vazios 
+                   emptySpacesY.add(y);
                }
                
            }
            
        } 
-     int escolha = r.nextInt(emptySpaces.size());
+     int escolha = r.nextInt(emptySpacesX.size());
      int escolhaNumero = r.nextInt(10);
      int newNumber=2;
-      if(escolhaNumero == 0){
+      if(escolhaNumero == 0 || escolhaNumero == 5){
           newNumber = 4;
       }
       
-      int[] coordenadas = emptySpaces.get(escolha);
-      emptySpaces[coordenadas[0]][coordenadas[1]] = newNumber;
+      int X = emptySpacesX.get(escolha);
+      int Y = emptySpacesY.get(escolha);
+      gameBoard[X][Y] = newNumber;
     }
 }
