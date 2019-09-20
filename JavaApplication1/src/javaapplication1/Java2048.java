@@ -16,6 +16,9 @@ public class Java2048 {
      */
     public static void main(String[] args) {
          Game g= new Game();
+         Janela janela = new Janela();
+         janela.painel();
+         janela.CapturarTeclado();
         
         for(int i=0;i<10;i++){
             
