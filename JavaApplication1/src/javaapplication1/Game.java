@@ -4,7 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication1;
+package Jogo2048;
 
 import java.util.ArrayList;
 import java.util.Random; // pro numero random
@@ -21,6 +21,8 @@ public class Game {
         gameBoard = new int[4][4];
         
     }
+
+ 
     
     public void printArray(){
         for(int[] x: gameBoard){
@@ -189,6 +191,12 @@ public class Game {
         }
        addNewNumbers(); 
     }
+ 
+    public int[][] getGameBoard() {
+        return gameBoard;
+    }
+
+
        
     
     
