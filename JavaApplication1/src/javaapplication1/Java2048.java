@@ -18,14 +18,9 @@ public class Java2048 {
          Game g= new Game();
          Janela janela = new Janela();
          janela.painel();
-         janela.CapturarTeclado();
         
-        for(int i=0;i<10;i++){
-            
         
-            g.addNewNumbers();
-            g.printArray();
-        }
+     
         
     }
     
