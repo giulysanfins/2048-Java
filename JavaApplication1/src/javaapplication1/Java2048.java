@@ -16,13 +16,11 @@ public class Java2048 {
      */
     public static void main(String[] args) {
          Game g= new Game();
+         Janela janela = new Janela();
+         janela.painel();
         
-        for(int i=0;i<10;i++){
-            
         
-            g.addNewNumbers();
-            g.printArray();
-        }
+     
         
     }
     
