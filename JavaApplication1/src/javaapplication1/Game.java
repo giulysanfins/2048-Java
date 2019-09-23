@@ -65,7 +65,7 @@ public class Game {
     
     public void moveUp(){
         System.out.println("Movendo cima");
-        int k = 1, x = 0,auxX=-1;
+        int k = 1, x = 0,auxX=-1,flag=0;
     
         
         for(int y=0;y<4;y++){
@@ -76,13 +76,15 @@ public class Game {
                     if(gameBoard[x-1][y]==0){
                         gameBoard[x-1][y]=gameBoard[x][y];
                         gameBoard[x][y]=0;
+                        if(gameBoard[x][y]!=0||gameBoard[x-1][y]!=0)flag=1;
+                        
                     }else
                     if(gameBoard[x][y]==gameBoard[x-1][y] &&  auxX != x-1 && auxX != x)
                     {
                         gameBoard[x-1][y]=(gameBoard[x-1][y])+(gameBoard[x][y]);
                         gameBoard[x][y]=0;
                          auxX= x-1;
-                        
+                        flag=1;
                     }
                  x--;
                 }
@@ -93,13 +95,13 @@ public class Game {
            
             k=1;
         }
-        addNewNumbers();
+      if(flag==1)addNewNumbers();  
     }
     
     
     
     public void moveDown(){
-        int k = 2, x,auxX=-1;
+        int k = 2, x,auxX=-1,flag=0;
         System.out.println("Movendo baixo");
     
         for(int y=3;y>=0;y--){
@@ -110,13 +112,15 @@ public class Game {
                     if(gameBoard[x+1][y]==0){
                         gameBoard[x+1][y]=gameBoard[x][y];
                         gameBoard[x][y]=0;
+                       if(gameBoard[x][y]!=0||gameBoard[x+1][y]!=0)flag=1;
+                        
                     }else
                     if(gameBoard[x][y]==gameBoard[x+1][y] && auxX != x+1 && auxX != x )
                     {
                         gameBoard[x+1][y]=(gameBoard[x+1][y])+(gameBoard[x][y]);
                         gameBoard[x][y]=0;
                         auxX= x+1;
-                        
+                        flag=1;
                     }
                  x++;
                 }
@@ -126,12 +130,12 @@ public class Game {
             auxX = -1;
             k=2;
         }
-        addNewNumbers();
+        if(flag==1)addNewNumbers();  
         
     }
     
     public void moveRight(){
-        int k = 2, y,auxY=-1;
+        int k = 2, y,auxY=-1,flag=0;
         System.out.println("Movendo direita");
     
         for(int x=3;x>=0;x--){
@@ -142,12 +146,15 @@ public class Game {
                     if(gameBoard[x][y+1]==0){
                         gameBoard[x][y+1]=gameBoard[x][y];
                         gameBoard[x][y]=0;
+                        if(gameBoard[x][y]!=0||gameBoard[x][y+1]!=0)flag=1;
+                        
                     }else
                     if(gameBoard[x][y]==gameBoard[x][y+1] && auxY != y+1 && auxY != y )
                     {
                         gameBoard[x][y+1]=(gameBoard[x][y+1])+(gameBoard[x][y]);
                         gameBoard[x][y]=0;
                         auxY= y+1;
+                        flag=1;
                         
                     }
                  y++;
@@ -158,11 +165,11 @@ public class Game {
             auxY = -1;
             k=2;
         }
-      addNewNumbers();  
+        if(flag==1)addNewNumbers();  
     }
     
  public void moveLeft(){
-        int k = 1, y,auxY=-1;
+        int k = 1, y,auxY=-1,flag=0;
         System.out.println("Movendo esquerda");
     
         for(int x=0;x<4;x++){
@@ -173,12 +180,15 @@ public class Game {
                     if(gameBoard[x][y-1]==0){
                         gameBoard[x][y-1]=gameBoard[x][y];
                         gameBoard[x][y]=0;
+                        if((gameBoard[x][y]!=0)||(gameBoard[x][y-1]!=0))flag=1;
+                        
                     }else
                     if(gameBoard[x][y]==gameBoard[x][y-1] && auxY != y-1 && auxY != y )
                     {
                         gameBoard[x][y-1]=(gameBoard[x][y-1])+(gameBoard[x][y]);
                         gameBoard[x][y]=0;
                         auxY= y-1;
+                        flag=1;
                         
                     }
                  y--;
@@ -189,7 +199,13 @@ public class Game {
             auxY = -1;
             k=1;
         }
-       addNewNumbers(); 
+        if(flag==1)addNewNumbers();  
+    
+    }
+    public int[][] FirstNumber(){
+        addNewNumbers();
+         addNewNumbers();
+        return gameBoard;
     }
  
     public int[][] getGameBoard() {
