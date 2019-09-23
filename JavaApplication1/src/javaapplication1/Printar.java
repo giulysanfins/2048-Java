@@ -137,7 +137,7 @@ public final class Printar extends javax.swing.JFrame {
 
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jButton3 = new javax.swing.JButton();
@@ -206,7 +206,7 @@ public final class Printar extends javax.swing.JFrame {
         jButton5.setBounds(26, 245, 50, 80);
 
         setBounds(700, 200, 501, 639);
-    }// </editor-fold>                        
+    }// </editor-fold>//GEN-END:initComponents
 
     public void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
 
@@ -292,7 +292,7 @@ public final class Printar extends javax.swing.JFrame {
         /*
          {
          }/*  
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
           //for(int i=0;i<4;i++){  
          aux=gameBoard[0][0];
          jLabel1.setText(Integer.toString(aux));
@@ -331,19 +331,19 @@ public final class Printar extends javax.swing.JFrame {
         
         
          //}
-    }                                        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }                                        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-    }                                        
+    }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add yur handling code here:
-    }                                        
+    }//GEN-LAST:event_jButton1ActionPerformed
     /*
          public void imprimindo(){
          for(int i=0;i<3;i++){
@@ -391,11 +391,11 @@ public final class Printar extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
-    // End of variables declaration                   
+    // End of variables declaration//GEN-END:variables
 
 }
