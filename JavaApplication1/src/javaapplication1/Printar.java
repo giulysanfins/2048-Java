@@ -7,8 +7,13 @@ package javaapplication1;
 
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,18 +22,24 @@ import javax.swing.JPanel;
  *
  * @author VICTOR
  */
-public final class Printar extends javax.swing.JFrame {
+public final class Printar extends javax.swing.JFrame implements KeyListener,ActionListener {
 
     //JLabel blackground = new JLabel(new ImageIcon(getClass().getResource("blackground.png")));
 
     Game matriz = new Game();
     
     public int[][] gameBoard = matriz.FirstNumber();
-    
+    Janela janela = new Janela();
     JPanel background = new JPanel();
     JLabel[][] Numblocos = new JLabel[4][4];
     int aux, posX = 105, posY = 145;
    // Font fonte = new Font("Boulder", Font.BOLD, 15);
+    
+    ImageIcon img = new ImageIcon(getClass().getResource("Telainicial.png"));
+    JLabel foto = new JLabel(img);
+    JButton jogo = new JButton("Jogo");
+    JButton creditos = new JButton("Creditos");
+    JButton sair = new JButton("Sair");
     ImageIcon inicial = new ImageIcon("blocoincial.png");
     ImageIcon bloco2 = new ImageIcon("bloco2.PNG");
     Icon bloco4 = new ImageIcon("bloco4.png");
@@ -43,16 +54,17 @@ public final class Printar extends javax.swing.JFrame {
     Icon bloco2048 = new ImageIcon("bloco2048.png");
     Icon win = new ImageIcon("tela de win.PNG");
     JLabel teladewin = new JLabel();
-
-
-               
-
+    
     public Printar() {
-        //setResizable(false);
+        setResizable(false);
         initComponents();
         setLayout(null);
         setTitle("2048 by Giuly and Vking");
         printarNumblocos();
+        addKeyListener(this);
+        setFocusable(true);
+        setVisible(true);
+        setLocationRelativeTo(null);
         //teladewin.setVisible(true);
         // add(teladewin);
         //teladewin.setBounds(95, 135, 300, 300);
@@ -64,6 +76,118 @@ public final class Printar extends javax.swing.JFrame {
         add(background);
        
     }
+    
+    
+    
+     @Override
+    public void keyPressed(KeyEvent e){
+            
+            int codigo = e.getKeyCode(); //atribuindo teclado
+            //Seta P/ baixo
+        if (e.getKeyCode()==40|| e.getKeyCode()==KeyEvent.VK_S){ //BAIXO
+            //API https://docs.oracle.com/javase/1.5.0/docs/api/
+        posY = 105;
+        posX = 150;
+        gameBoard = matriz.getGameBoard();
+        matriz.verificarlooser(gameBoard);
+        
+        matriz.moveDown(gameBoard);
+        matriz.setGameBoard(gameBoard);
+        gameBoard = matriz.getGameBoard();
+
+        matriz.printArray();
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 4; x++) {
+                aux = gameBoard[x][y];
+                verificar(aux,x, y);
+                posY = posY + 72;
+            }
+            posY = 145;
+            posX = posX + 72;
+        }
+            
+        }
+        //Seta P/ cima        
+        if (e.getKeyCode()==38 || e.getKeyCode()==KeyEvent.VK_W ){ //MOVER CIMA
+            posY = 105;
+        posX = 145;
+        gameBoard = matriz.getGameBoard();
+        matriz.verificarlooser(gameBoard);
+       
+        matriz.moveUp(gameBoard);
+        matriz.setGameBoard(gameBoard);
+        gameBoard = matriz.getGameBoard();
+        
+        matriz.printArray();
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 4; x++) {
+                aux = gameBoard[x][y];
+                verificar(aux, x, y);
+
+                posY = posY + 72;
+            }
+            posY = 145;
+            posX = posX + 72;
+        }
+
+        }
+        //Seta P/ direita
+        if (e.getKeyCode()==39|| e.getKeyCode()==KeyEvent.VK_D){ //DIREITA
+           posY = 105;
+        posX = 145;
+        gameBoard = matriz.getGameBoard();
+        matriz.verificarlooser(gameBoard);
+        
+        matriz.moveRight(gameBoard);
+        matriz.setGameBoard(gameBoard);
+        gameBoard = matriz.getGameBoard();
+
+        matriz.printArray();
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 4; x++) {
+                aux = gameBoard[x][y];
+                verificar(aux,x, y);
+                posY = posY + 72;
+            }
+            posY = 145;
+            posX = posX + 72;
+        }
+
+        }
+        //Seta P/ esquerda
+        if (e.getKeyCode()==37|| e.getKeyCode()==KeyEvent.VK_A){ //ESQUERDA
+            posY = 105;
+        posX = 145;
+        gameBoard = matriz.getGameBoard();
+        matriz.verificarlooser(gameBoard);
+       
+        matriz.moveLeft(gameBoard);
+        matriz.setGameBoard(gameBoard);
+        gameBoard = matriz.getGameBoard();
+        matriz.printArray();
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 4; x++) {
+                aux = gameBoard[x][y];
+                verificar(aux, x, y);
+                posY = posY + 72;
+            }
+            posY = 145;
+            posX = posX + 72;
+        }
+        }
+        }
+     
+    @Override
+     public void keyReleased(KeyEvent e){
+         
+         
+     }
+    
+    @Override
+     public void keyTyped(KeyEvent e){
+         
+         
+     }
 
     public void printarNumblocos() {
         gameBoard = matriz.getGameBoard();
@@ -183,7 +307,7 @@ public final class Printar extends javax.swing.JFrame {
         setBounds(700, 200, 501, 639);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+    public void jButton3ActionPerformed(java.awt.event.ActionEvent evt) { //mover down
 
         posY = 105;
         posX = 150;
@@ -207,7 +331,7 @@ public final class Printar extends javax.swing.JFrame {
 
     }
 
-    public void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    public void jButton1ActionPerformed(java.awt.event.ActionEvent evt) { //mover direita
 
         posY = 105;
         posX = 145;
@@ -231,7 +355,7 @@ public final class Printar extends javax.swing.JFrame {
 
     }
 
-    public void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    public void jButton2ActionPerformed(java.awt.event.ActionEvent evt) { //mover cima
 
         posY = 105;
         posX = 145;
@@ -256,7 +380,7 @@ public final class Printar extends javax.swing.JFrame {
 
     }
 
-    public void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+    public void jButton5ActionPerformed(java.awt.event.ActionEvent evt) { //mover esq
 
         posY = 105;
         posX = 145;
@@ -297,5 +421,10 @@ public final class Printar extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+       
+    }
 
 }

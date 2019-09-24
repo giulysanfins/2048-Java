@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Jogo2048;
+package javaapplication1;
 
 import static com.sun.glass.ui.Cursor.setVisible;
 import javax.swing.JFrame;
@@ -20,7 +20,9 @@ public class Java2048{
     public static void main(String[] args) {
          //int aux[][] = null;
          Game g= new Game();
-         Printar p=new Printar();
+         
+         Janela janela = new Janela();
+         janela.painel();
          //Captura tecla=new Captura();
          //Janela janela = new Janela();
          //janela.painel();
@@ -32,7 +34,7 @@ public class Java2048{
          
         //for(int i=0;i<10;i++){
             
-            p.setVisible(true);
+            
             //g.printArray();
             //g.addNewNumbers();
             //g.printArray();

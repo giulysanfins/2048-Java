@@ -19,7 +19,7 @@ public class loose extends JFrame{
     JLabel teladeloose = new JLabel();
     Icon loose = new ImageIcon("derrota.png");
     public loose(){
-        setLocationRelativeTo( null );
+        setLocationRelativeTo(null);
         teladeloose.setIcon(loose);
         teladeloose.setBounds(0, 0, 500, 600);
         add(teladeloose); //adicionando botoes no painel
