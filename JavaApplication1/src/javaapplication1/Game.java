@@ -4,10 +4,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Jogo2048;
+package javaapplication1;
 
 import java.util.ArrayList;
 import java.util.Random; // pro numero random
+
 
 /**
  *
@@ -15,7 +16,12 @@ import java.util.Random; // pro numero random
  */
 public class Game {
     private int[][] gameBoard;
+    
     private Random r = new Random(); //varivale pra random
+    
+    int flagup=0,flagdown=0,flagright=0,flagleft=0;
+
+   
     
     public Game(){
         gameBoard = new int[4][4];
@@ -33,7 +39,7 @@ public class Game {
         
     }
     
-    public void addNewNumbers()
+    public void addNewNumbers(int[][] gameBoard)
     {
         System.out.println("Adicionando numero");
         ArrayList<Integer> emptySpacesX = new ArrayList();
@@ -63,7 +69,7 @@ public class Game {
       gameBoard[X][Y] = newNumber;
     }
     
-    public void moveUp(){
+    public int moveUp(int[][] gameBoard){
         System.out.println("Movendo cima");
         int k = 1, x = 0,auxX=-1,flag=0;
     
@@ -95,15 +101,17 @@ public class Game {
            
             k=1;
         }
-      if(flag==1)addNewNumbers();  
+      if(flag==1)addNewNumbers(gameBoard); 
+      return flag;
     }
     
     
     
-    public void moveDown(){
+    public int moveDown(int[][] gameBoard){
         int k = 2, x,auxX=-1,flag=0;
         System.out.println("Movendo baixo");
-    
+        
+        //gameBoard[0][2]=2048;
         for(int y=3;y>=0;y--){
             for(int j=0;j<3;j++){
                 x=k;
@@ -112,7 +120,9 @@ public class Game {
                     if(gameBoard[x+1][y]==0){
                         gameBoard[x+1][y]=gameBoard[x][y];
                         gameBoard[x][y]=0;
+                        
                        if(gameBoard[x][y]!=0||gameBoard[x+1][y]!=0)flag=1;
+
                         
                     }else
                     if(gameBoard[x][y]==gameBoard[x+1][y] && auxX != x+1 && auxX != x )
@@ -130,11 +140,13 @@ public class Game {
             auxX = -1;
             k=2;
         }
-        if(flag==1)addNewNumbers();  
+        
+        if(flag==1)addNewNumbers(gameBoard);  
+        return flag;
         
     }
     
-    public void moveRight(){
+    public int moveRight(int [][] gameBoard){
         int k = 2, y,auxY=-1,flag=0;
         System.out.println("Movendo direita");
     
@@ -165,10 +177,11 @@ public class Game {
             auxY = -1;
             k=2;
         }
-        if(flag==1)addNewNumbers();  
+        if(flag==1)addNewNumbers(gameBoard);  
+        return flag;
     }
     
- public void moveLeft(){
+ public int moveLeft(int [][] gameBoard){
         int k = 1, y,auxY=-1,flag=0;
         System.out.println("Movendo esquerda");
     
@@ -199,18 +212,44 @@ public class Game {
             auxY = -1;
             k=1;
         }
-        if(flag==1)addNewNumbers();  
+        if(flag==1)addNewNumbers(gameBoard); 
+        return flag;
     
     }
     public int[][] FirstNumber(){
-        addNewNumbers();
-         addNewNumbers();
+        addNewNumbers(gameBoard);
+         addNewNumbers(gameBoard);
         return gameBoard;
+    }
+    public void verificarlooser(int [][] gameBoard){
+
+        int[][] matrizaux=new int[4][4];//verificar loose
+        
+        for(int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+                matrizaux[i][j]=gameBoard[i][j];
+            }
+        }
+        
+        flagdown =moveDown(matrizaux);
+        flagup =moveUp(matrizaux);
+        flagleft =moveLeft(matrizaux);
+        flagright =moveRight(matrizaux);
+        
+        if(flagdown==0&&flagup==0&&flagleft==0&&flagright==0){
+            loose looser=new loose();
+        }
+
     }
  
     public int[][] getGameBoard() {
         return gameBoard;
     }
+
+    public void setGameBoard(int[][] gameBoard) {
+        this.gameBoard = gameBoard;
+    }
+    
 
 
        
