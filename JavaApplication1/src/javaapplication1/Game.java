@@ -16,7 +16,7 @@ public class Game {
 
     private int[][] gameBoard;
     
-    public int score=0;
+    public int score=0,flagcont=0;
 
     private Random r = new Random(); //varivale pra random
 
@@ -78,7 +78,7 @@ public class Game {
                         }
 
                     } else if (gameBoard[x][y] == gameBoard[x - 1][y] && auxX != x - 1 && auxX != x) {
-                        score += gameBoard[x][y] + gameBoard[x - 1][y];
+                        if(flagcont==0) score += gameBoard[x][y] + gameBoard[x - 1][y];
                         gameBoard[x - 1][y] = (gameBoard[x - 1][y]) + (gameBoard[x][y]);
                         gameBoard[x][y] = 0;
                         auxX = x - 1;
@@ -118,7 +118,7 @@ public class Game {
                         }
 
                     } else if (gameBoard[x][y] == gameBoard[x + 1][y] && auxX != x + 1 && auxX != x) {
-                        score += gameBoard[x][y] + gameBoard[x+1][y];
+                        if(flagcont==0) score += gameBoard[x][y] + gameBoard[x+1][y];
                         gameBoard[x + 1][y] = (gameBoard[x + 1][y]) + (gameBoard[x][y]);
                         gameBoard[x][y] = 0;
                         auxX = x + 1;
@@ -156,7 +156,7 @@ public class Game {
                         }
 
                     } else if (gameBoard[x][y] == gameBoard[x][y + 1] && auxY != y + 1 && auxY != y) {
-                        score+= gameBoard[x][y] + gameBoard[x][y+1];
+                        if(flagcont==0) score+= gameBoard[x][y] + gameBoard[x][y+1];
                         gameBoard[x][y + 1] = (gameBoard[x][y + 1]) + (gameBoard[x][y]);
                         gameBoard[x][y] = 0;
                         auxY = y + 1;
@@ -193,7 +193,7 @@ public class Game {
                         }
 
                     } else if (gameBoard[x][y] == gameBoard[x][y - 1] && auxY != y - 1 && auxY != y) {
-                        score += gameBoard[x][y] + gameBoard[x][y-1];
+                        if(flagcont==0) score += gameBoard[x][y] + gameBoard[x][y-1];
                         gameBoard[x][y - 1] = (gameBoard[x][y - 1]) + (gameBoard[x][y]);
                         gameBoard[x][y] = 0;
                         auxY = y - 1;
@@ -230,7 +230,7 @@ public class Game {
                 matrizaux[i][j] = gameBoard[i][j];
             }
         }
-
+        flagcont=1; 
         flagdown = moveDown(matrizaux);
         flagup = moveUp(matrizaux);
         flagleft = moveLeft(matrizaux);
@@ -239,7 +239,7 @@ public class Game {
         if (flagdown == 0 && flagup == 0 && flagleft == 0 && flagright == 0) {
             loose looser = new loose();
         }
-
+        flagcont=0;
     }
 
     public int[][] getGameBoard() {
