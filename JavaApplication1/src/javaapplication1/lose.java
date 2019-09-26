@@ -16,10 +16,9 @@ import javax.swing.JLabel;
  *
  * @author VICTOR
  */
-public class Win extends JFrame{
+public class lose extends JFrame{
     
-    JLabel teladeWin = new JLabel();
-    
+    JLabel teladeloose = new JLabel();
     JLabel botaosair = new JLabel();
     JLabel botaoreniciar = new JLabel();
     Printar matriz= new Printar();
@@ -28,28 +27,22 @@ public class Win extends JFrame{
     Icon reniciar = new ImageIcon("Label verde.png");
     Icon loose = new ImageIcon("derrota.png");
     Icon sair = new ImageIcon("Label verde.png");
-  
     
-    Icon Win = new ImageIcon("tela de win2.png");
-    public Win(){
+    public lose(){
         setLocationRelativeTo(null);
-        teladeWin.setIcon(Win);
-        
-        //teladeWin.setVisible(true);
+        teladeloose.setIcon(loose);
+        teladeloose.setBounds(0, 0, 500, 600);
         botaosair.setIcon(sair);
         botaosair.setBounds(130,400,100,100);
         botaoreniciar.setIcon(reniciar);
         botaoreniciar.setBounds(260, 400, 100, 100);
-        teladeWin.setBounds(0, 0, 500, 600);
+        
         add(botaoreniciar);
         add(botaosair);
-        add(teladeWin); //adicionando botoes no painel
+        add(teladeloose); //adicionando botoes no painel
         
         
-        
-        
-        
-                botaoreniciar.addMouseListener(new MouseAdapter() {
+        botaoreniciar.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 dispose();
                 reiniciar();
@@ -63,7 +56,8 @@ public class Win extends JFrame{
             }
             });
         
-        
+        //botaosair.setVisible(true);
+       // teladeloose.setVisible(true);
         setTitle("2048 by Giuly and Vking");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500,600);
@@ -73,7 +67,7 @@ public class Win extends JFrame{
     }
     
     
-     public void reiniciar(){
+    public void reiniciar(){
         matriz.getGameBoard();
         for (int i = 0; i < 4; i++) {
             for(int j=0;j<4;j++)
