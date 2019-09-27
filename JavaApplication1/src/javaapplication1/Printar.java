@@ -70,7 +70,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     //JLabel pontuacao = new JLabel("Pontuacao ");
     Icon blocoverde=new ImageIcon("Label verde.png");
     JLabel easteregg = new JLabel();
-    Icon easter = new ImageIcon("Label verde.png");
+    Icon easter = new ImageIcon("hellokitty.png");
     JLabel fundo=new JLabel();
     Icon back =new ImageIcon("background.PNG");
     Font font = new Font("Arial",Font.BOLD,20);
@@ -238,31 +238,67 @@ setBounds(600, 600, 500, 600);
                
         });
         
-         easteregg.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-               System.out.println("COMPILOU");
-            for (int i = 0; i < 4; i++) {
-                for(int j=0;j<4;j++)
-                {
-                    gameBoard[i][j]=0;
+        easteregg.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) { //primeiro
+                System.out.println("COMPILOU");
+                easteregg.setVisible(false);
+                easteregg.setBounds(400, 0, 60, 60); //segunda posicao
+                easteregg.setVisible(true);
+                easteregg.addMouseListener(new MouseAdapter() {
+                    public void mouseClicked(MouseEvent e) {
+                        System.out.println("COMPILOU");
+                        easteregg.setVisible(false);
+                        easteregg.setBounds(0, 0, 60, 60); //terceira posicao
+                        easteregg.setVisible(true);
+                        easteregg.addMouseListener(new MouseAdapter() {
+                            public void mouseClicked(MouseEvent e) {
+                                System.out.println("COMPILOU");
+
+                                easteregg.addMouseListener(new MouseAdapter() {
+                                    public void mouseClicked(MouseEvent e) {
+                                        System.out.println("COMPILOU");
+                                        easteregg.setVisible(false);
+                                        easteregg.setBounds(0, 400, 60, 60);
+                                        easteregg.setVisible(true);
+                                        easteregg.addMouseListener(new MouseAdapter() {
+                                            public void mouseClicked(MouseEvent e) {
+                                                System.out.println("COMPILOU");
+                                                easteregg.setVisible(false);
+
+                                                for (int i = 0; i < 4; i++) {
+                                                    for (int j = 0; j < 4; j++) {
+                                                        gameBoard[i][j] = 0;
+                                                    }
+                                                }
+
+                                                for (int i = 0; i < 4; i++) {
+                                                    for (int j = 0; j < 4; j++) {
+
+                                                        gameBoard[i][j] = 0;
+                                                        gameBoard[2][3] = 1024;
+                                                        gameBoard[2][2] = 1024;
+                                                        aux = gameBoard[i][j];
+                                                        verificar(aux, i, j,0);
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                        );
+
+                                    }
+                                }
+                                );
+                            }
+                        }
+                        );
+
+                    }
                 }
-             }
-            
-            for (int i = 0; i < 4; i++) {
-                for(int j=0;j<4;j++)
-                {
-                    
-                    gameBoard[i][j]=0;
-                    gameBoard[2][3]=1024;
-                    gameBoard[2][2]=1024;
-                    aux=gameBoard[i][j];
-                    verificar(aux, i, j,0);
-                }
-             }
-                
+                );
 
             }
-            });
+        });
 
     }
 
