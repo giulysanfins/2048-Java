@@ -32,10 +32,10 @@ public class lose extends JFrame{
         setLocationRelativeTo(null);
         teladeloose.setIcon(loose);
         teladeloose.setBounds(0, 0, 500, 600);
-        botaosair.setIcon(sair);
-        botaosair.setBounds(130,400,100,100);
-        botaoreniciar.setIcon(reniciar);
-        botaoreniciar.setBounds(260, 400, 100, 100);
+ 
+
+        botaosair.setBounds(50,465,140,71);
+        botaoreniciar.setBounds(210, 465, 230, 71);
         
         add(botaoreniciar);
         add(botaosair);

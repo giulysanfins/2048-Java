@@ -25,9 +25,9 @@ public class Win extends JFrame{
     Printar matriz= new Printar();
     int[][] matrizaux=new int[4][4];
     
-    Icon reniciar = new ImageIcon("Label verde.png");
-    Icon loose = new ImageIcon("derrota.png");
-    Icon sair = new ImageIcon("Label verde.png");
+    //Icon reniciar = new ImageIcon("Label verde.png");
+    //Icon loose = new ImageIcon("derrota.png");
+    //Icon sair = new ImageIcon("Label verde.png");
   
     
     Icon Win = new ImageIcon("tela de win2.png");
@@ -35,11 +35,9 @@ public class Win extends JFrame{
         setLocationRelativeTo(null);
         teladeWin.setIcon(Win);
         
-        //teladeWin.setVisible(true);
-        botaosair.setIcon(sair);
-        botaosair.setBounds(130,400,100,100);
-        botaoreniciar.setIcon(reniciar);
-        botaoreniciar.setBounds(260, 400, 100, 100);
+
+        botaosair.setBounds(50,465,140,71);
+        botaoreniciar.setBounds(210, 465, 230, 71);
         teladeWin.setBounds(0, 0, 500, 600);
         add(botaoreniciar);
         add(botaosair);
