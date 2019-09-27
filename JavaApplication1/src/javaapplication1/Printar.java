@@ -32,8 +32,8 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     Janela janela = new Janela();
     JPanel background = new JPanel();
     JLabel[][] Numblocos = new JLabel[4][4];
-    int aux, posX = 105, posY = 145;
-
+    int aux, posX = 105, posY = 145,auxposX=0,auxposY=0,flaggeral=0,n=0;
+    int vet[]=new int[16];
     ImageIcon img = new ImageIcon(getClass().getResource("Telainicial.png"));
     JLabel foto = new JLabel(img);
     ImageIcon setaCima1 = new ImageIcon(getClass().getResource("seta up.png"));
@@ -49,11 +49,16 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     JButton creditos = new JButton("Creditos");
     JButton sair = new JButton("Sair");
     ImageIcon inicial = new ImageIcon("blocoincial.png");
-    ImageIcon bloco2 = new ImageIcon("bloco2.PNG");
+    Icon bloco2 = new ImageIcon("bloco2.png");
+    Icon bloco2frag = new ImageIcon("bloco2frag.gif");
     Icon bloco4 = new ImageIcon("bloco4.png");
+    Icon bloco4frag = new ImageIcon("bloco4frag.gif");
     Icon bloco8 = new ImageIcon("bloco8.png");
+    Icon bloco8frag = new ImageIcon("bloco8frag.gif");
     Icon bloco16 = new ImageIcon("bloco16.png");
+    Icon bloco16frag = new ImageIcon("bloco16frag.gif");
     Icon bloco32 = new ImageIcon("bloco32.png");
+    Icon bloco32frag = new ImageIcon("bloco32frag.gif");;
     Icon bloco64 = new ImageIcon("bloco64.png");
     Icon bloco128 = new ImageIcon("bloco128.png");
     Icon bloco256 = new ImageIcon("bloco256.png");
@@ -65,6 +70,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     Icon blocoverde=new ImageIcon("Label verde.png");
     JLabel easteregg = new JLabel();
     Icon easter = new ImageIcon("Label verde.png");
+    
    
 
     public Printar() {
@@ -114,45 +120,112 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
 
         setaDireita.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                //posY = 105;
-                //posX = 145;
+                matriz.setN(0);
                 gameBoard = matriz.getGameBoard();
                 matriz.verificarlooser(gameBoard);
                 
-                matriz.moveRight(gameBoard);
-                movimento();
+                int flag=matriz.moveRight(gameBoard,vet,n);
+                
+               vet=matriz.getVet();
+            n=matriz.getN();
+            
+            //print testes
+             for(int i=0;i<n;i++){
+                System.out.println(vet[i]);
+                
+            }
+            System.out.println(n);//ate aki...
+            
+            movimento(flag,vet,n);
+           matriz.setN(0);
+           n=0;
+             for(int i=0;i<n;i++){
+                vet[i]=0;
+                
+            }
             }
 
         });
         setaEsquerda.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                //posY = 105;
-                //posX = 145;
+                matriz.setN(0);
                 gameBoard = matriz.getGameBoard();
                 matriz.verificarlooser(gameBoard);
 
-                matriz.moveLeft(gameBoard);
-                movimento();
-  
+                int flag=matriz.moveLeft(gameBoard,vet,n);
+               
+                vet=matriz.getVet();
+            n=matriz.getN();
+            
+            //print testes
+             for(int i=0;i<n;i++){
+                System.out.println(vet[i]);
+                
+            }
+            System.out.println(n);//ate aki...
+            
+            movimento(flag,vet,n);
+           matriz.setN(0);
+           n=0;
+             for(int i=0;i<n;i++){
+                vet[i]=0;
+                
+            }
             }
 
         });
         setaBaixo.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
+                matriz.setN(0);
                 gameBoard = matriz.getGameBoard();
                 matriz.verificarlooser(gameBoard);
-                matriz.moveDown(gameBoard);  
-                movimento();
+                int flag=matriz.moveDown(gameBoard,vet,n);  
+                
+                vet=matriz.getVet();
+            n=matriz.getN();
+            
+            //print testes
+             for(int i=0;i<n;i++){
+                System.out.println(vet[i]);
+                
+            }
+            System.out.println(n);//ate aki...
+            
+            movimento(flag,vet,n);
+           matriz.setN(0);
+           n=0;
+             for(int i=0;i<n;i++){
+                vet[i]=0;
+                
+            }
             }
 
         });
 
         setaCima.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
+                matriz.setN(0);
                 gameBoard = matriz.getGameBoard();
                 matriz.verificarlooser(gameBoard);
-                matriz.moveUp(gameBoard);
-                movimento();
+                int flag =matriz.moveUp(gameBoard,vet,n);
+                
+                vet=matriz.getVet();
+            n=matriz.getN();
+            
+            //print testes
+             for(int i=0;i<n;i++){
+                System.out.println(vet[i]);
+                
+            }
+            System.out.println(n);//ate aki...
+            
+            movimento(flag,vet,n);
+           matriz.setN(0);
+           n=0;
+             for(int i=0;i<n;i++){
+                vet[i]=0;
+                
+            }
             }
                
         });
@@ -175,7 +248,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
                     gameBoard[2][3]=1024;
                     gameBoard[2][2]=1024;
                     aux=gameBoard[i][j];
-                    verificar(aux, i, j);
+                    verificar(aux, i, j,0);
                 }
              }
                 
@@ -191,40 +264,109 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         int codigo = e.getKeyCode(); //atribuindo teclado
         //Seta P/ baixo
         if (e.getKeyCode() == 40 || e.getKeyCode() == KeyEvent.VK_S) { //BAIXO
+            matriz.setN(0);
             gameBoard = matriz.getGameBoard();
             matriz.verificarlooser(gameBoard);
 
-            matriz.moveDown(gameBoard);
-            movimento();
+            int flag=matriz.moveDown(gameBoard,vet,n);
+            
+            vet=matriz.getVet();
+            n=matriz.getN();
+            
+            //print testes
+             for(int i=0;i<n;i++){
+                System.out.println(vet[i]);
+                
+            }
+            System.out.println(n);//ate aki...
+            
+            movimento(flag,vet,n);
+           matriz.setN(0);
+           n=0;
+             for(int i=0;i<n;i++){
+                vet[i]=0;
+                
+            }
         }
         //Seta P/ cima        
         if (e.getKeyCode() == 38 || e.getKeyCode() == KeyEvent.VK_W) { //MOVER CIMA
-            posY = 105;
-            posX = 145;
+            matriz.setN(0);
             gameBoard = matriz.getGameBoard();
             matriz.verificarlooser(gameBoard);
 
-            matriz.moveUp(gameBoard);
-            movimento();
-        
+            int flag=matriz.moveUp(gameBoard,vet,n);
+            
+            vet=matriz.getVet();
+            n=matriz.getN();
+            
+            //print testes
+             for(int i=0;i<n;i++){
+                System.out.println(vet[i]);
+                
+            }
+            System.out.println(n);//ate aki...
+            
+            movimento(flag,vet,n);
+           matriz.setN(0);
+           n=0;
+             for(int i=0;i<n;i++){
+                vet[i]=0;
+                
+            }
         }
         //Seta P/ direita
         if (e.getKeyCode() == 39 || e.getKeyCode() == KeyEvent.VK_D) { //DIREITA
+            matriz.setN(0);
             gameBoard = matriz.getGameBoard();
             matriz.verificarlooser(gameBoard);
-            matriz.moveRight(gameBoard);
-            movimento();
+            int flag=matriz.moveRight(gameBoard,vet,n);
+            
+           vet=matriz.getVet();
+            n=matriz.getN();
+            
+            //print testes
+             for(int i=0;i<n;i++){
+                System.out.println(vet[i]);
+                
+            }
+            System.out.println(n);//ate aki...
+            
+            movimento(flag,vet,n);
+           matriz.setN(0);
+           n=0;
+             for(int i=0;i<n;i++){
+                vet[i]=0;
+                
+            }
            
         }
         //Seta P/ esquerda
         if (e.getKeyCode() == 37 || e.getKeyCode() == KeyEvent.VK_A) { //ESQUERDA
+            matriz.setN(0);
             gameBoard = matriz.getGameBoard();
             matriz.verificarlooser(gameBoard);
-            matriz.moveLeft(gameBoard);
-            movimento();
+            int flag=matriz.moveLeft(gameBoard,vet,n);
+            
+            vet=matriz.getVet();
+            n=matriz.getN();
+            
+            //print testes
+             for(int i=0;i<n;i++){
+                System.out.println(vet[i]);
+                
+            }
+            System.out.println(n);//ate aki...
+            
+            movimento(flag,vet,n);
+           matriz.setN(0);
+           n=0;
+             for(int i=0;i<n;i++){
+                vet[i]=0;
+                
+            }
  
         }
-
+        
     }
 
     @Override
@@ -251,11 +393,15 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
                 }
                 if (aux == 2) {
                     Numblocos[x][y].setIcon(bloco2);
+                    Numblocos[x][y].setIcon(bloco2frag);
+                    Numblocos[x][y].setIcon(bloco2);
+                    
                 }
                 if (aux == 4) {
                     Numblocos[x][y].setIcon(bloco4);
+                    Numblocos[x][y].setIcon(bloco4frag);
+                    Numblocos[x][y].setIcon(bloco4);   
                 }
-
                 posY = posY + 72;
             }
             posY = 145;
@@ -263,10 +409,13 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         }
     }
 
-    public void verificar(int aux, int y, int x) {
-
-        if (aux == 0) {
-            Numblocos[x][y].setIcon(inicial);
+    
+    public void verificar(int aux, int y, int x,int flag) {
+       Animation anim =new Animation();
+       
+       if(flag==0){
+           if(aux==0){
+             Numblocos[x][y].setIcon(inicial);
         }
         if (aux == 2) {
             Numblocos[x][y].setIcon(bloco2);
@@ -278,7 +427,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
             Numblocos[x][y].setIcon(bloco8);
         }
         if (aux == 16) {
-            Numblocos[x][y].setIcon(bloco16);
+            Numblocos[x][y].setIcon(bloco16);         
         }
         if (aux == 32) {
             Numblocos[x][y].setIcon(bloco32);
@@ -287,7 +436,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
             Numblocos[x][y].setIcon(bloco64);
         }
         if (aux == 128) {
-            Numblocos[x][y].setIcon(bloco128);
+           Numblocos[x][y].setIcon(bloco128);
         }
         if (aux == 256) {
             Numblocos[x][y].setIcon(bloco256);
@@ -299,28 +448,44 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
             Numblocos[x][y].setIcon(bloco1024);
         }
         if (aux == 2048) {
-
             Win winner = new Win();
             Numblocos[x][y].setIcon(bloco2048);
-
         }
+       }else{
+       
+        anim.setAux(aux);
+        anim.setX(x);
+        anim.setY(y);
+        anim.run(Numblocos);
+       }
     }
-    public void movimento(){
-            posY = 105;
-            posX = 145;
+    
+    public void movimento(int flag,int vet[],int n){
+            
+            n--;
             matriz.setGameBoard(gameBoard);
             gameBoard = matriz.getGameBoard();
             score.setText(Integer.toString(matriz.score));
             matriz.printArray();
+            System.out.println(flag);
+                   
             for (int y = 0; y < 4; y++) {
                 for (int x = 0; x < 4; x++) {
                     aux = gameBoard[x][y];
-                    verificar(aux, x, y);
+                    for(int i=0;i<n;i=i+2){
+                        if(vet[i]==x&&vet[i+1]==y){
+                            verificar(aux, x, y,flag);
+                        flaggeral=1;
+                        }
+                    }
+                    if(flaggeral==0) verificar(aux, x, y,0);
                     posY = posY + 72;
+                    flaggeral=0;
                 }
                 posY = 145;
                 posX = posX + 72;
             }
+            matriz.setN(0);
     }
 
     public static void main(String args[]) {
@@ -345,4 +510,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         this.gameBoard = gameBoard;
     }
 
+
+    
+    
 }
