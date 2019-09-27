@@ -25,16 +25,21 @@ public class Animation extends Thread{
     Icon bloco4 = new ImageIcon("bloco4.png");
     Icon bloco4frag = new ImageIcon("bloco4aument.gif");
     Icon bloco8 = new ImageIcon("bloco8.png");
-    Icon bloco8frag = new ImageIcon("bloco8frag.gif");
+    Icon bloco8frag = new ImageIcon("bloco8aument.gif");
     Icon bloco16 = new ImageIcon("bloco16.png");
-    Icon bloco16frag = new ImageIcon("bloco16frag.gif");
+    Icon bloco16frag = new ImageIcon("bloco16aument.gif");
     Icon bloco32 = new ImageIcon("bloco32.png");
-    Icon bloco32frag = new ImageIcon("bloco32frag.gif");
+    Icon bloco32frag = new ImageIcon("bloco32aument.gif");
     Icon bloco64 = new ImageIcon("bloco64.png");
+    Icon bloco64frag = new ImageIcon("bloco64aument.gif");
     Icon bloco128 = new ImageIcon("bloco128.png");
+    Icon bloco123frag = new ImageIcon("bloco128ument.gif");
     Icon bloco256 = new ImageIcon("bloco256.png");
+    Icon bloco256frag = new ImageIcon("bloco256aument.gif");
     Icon bloco512 = new ImageIcon("bloco512.png");
-    Icon bloco1024 = new ImageIcon("bloco1024.png");
+    Icon bloco512frag = new ImageIcon("bloco512aument.gif");
+    Icon bloco1024 = new ImageIcon("bloco-1024.gif");
+    Icon bloco1024frag = new ImageIcon("bloco1024aument.gif");
     Icon bloco2048 = new ImageIcon("bloco2048.png");
 
     public Animation() {
@@ -91,6 +96,8 @@ public class Animation extends Thread{
             Numblocos[x][y].setIcon(bloco512);
         }
         if (aux == 1024) {
+            Numblocos[x][y].setIcon(bloco1024frag);
+            try{Thread.sleep(1000);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco1024);
         }
         if (aux == 2048) {

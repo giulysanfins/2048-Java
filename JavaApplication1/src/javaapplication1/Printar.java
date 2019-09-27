@@ -256,7 +256,7 @@ setBounds(600, 600, 500, 600);
                     gameBoard[2][3]=1024;
                     gameBoard[2][2]=1024;
                     aux=gameBoard[i][j];
-                    verificar(aux, i, j,0);
+                    verificar(aux, i, j,1);
                 }
              }
                 
@@ -474,6 +474,8 @@ setBounds(600, 600, 500, 600);
             matriz.setGameBoard(gameBoard);
             gameBoard = matriz.getGameBoard();
             score.setText(Integer.toString(matriz.score));
+            score.setForeground(Color.WHITE);
+            score.setFont(font);
             matriz.printArray();
             System.out.println(flag);
                    
