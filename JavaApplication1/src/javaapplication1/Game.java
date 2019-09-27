@@ -110,11 +110,12 @@ public class Game {
 
             k = 1;
         }
-        if (flagaux == 1) {
+        if (flagaux == 1&&flagcont==0) {
             addNewNumbers(gameBoard);
         }
+        if(flagcont==0){
         setN(n);
-        setVet(vet);
+        setVet(vet);}
         return flag;
     }
 
@@ -165,11 +166,12 @@ public class Game {
             k = 2;
         }
 
-        if (flagaux == 1) {
+        if (flagaux == 1&&flagcont==0) {
             addNewNumbers(gameBoard);
         }
+       if(flagcont==0){
         setN(n);
-        setVet(vet);
+        setVet(vet);}
         return flag;
 
     }
@@ -219,11 +221,12 @@ public class Game {
             auxY = -1;
             k = 2;
         }
-        if (flagaux == 1) {
+        if (flagaux == 1&&flagcont==0) {
             addNewNumbers(gameBoard);
         }
+        if(flagcont==0){
         setN(n);
-        setVet(vet);
+        setVet(vet);}
         return flag;
     }
 
@@ -276,9 +279,9 @@ public class Game {
             addNewNumbers(gameBoard);
         }
         
-        
+        if(flagcont==0){
         setN(n);
-        setVet(vet);
+        setVet(vet);}
         return flag;
 
     }
