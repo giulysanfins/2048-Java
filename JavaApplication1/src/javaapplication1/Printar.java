@@ -74,7 +74,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     JLabel fundo=new JLabel();
     Icon back =new ImageIcon("background.PNG");
     Font font = new Font("Arial",Font.BOLD,20);
-    
+   
    
 
     public Printar() {
@@ -510,6 +510,8 @@ setBounds(600, 600, 500, 600);
             matriz.setGameBoard(gameBoard);
             gameBoard = matriz.getGameBoard();
             score.setText(Integer.toString(matriz.score));
+            score.setForeground(Color.WHITE);
+            score.setFont(font);
             matriz.printArray();
             System.out.println(flag);
                    

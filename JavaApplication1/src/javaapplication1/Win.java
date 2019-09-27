@@ -32,7 +32,6 @@ public class Win extends JFrame{
     
     Icon Win = new ImageIcon("tela de win2.png");
     public Win(){
-       // dispose();
         setLocationRelativeTo(null);
         teladeWin.setIcon(Win);
         
