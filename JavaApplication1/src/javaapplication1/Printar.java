@@ -6,6 +6,7 @@
 package javaapplication1;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -66,16 +67,18 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     Icon bloco1024 = new ImageIcon("bloco1024.png");
     Icon bloco2048 = new ImageIcon("bloco2048.png");
     Icon win = new ImageIcon("tela de win.PNG");
-    JLabel pontuacao = new JLabel("Pontuacao ");
+    //JLabel pontuacao = new JLabel("Pontuacao ");
     Icon blocoverde=new ImageIcon("Label verde.png");
     JLabel easteregg = new JLabel();
     Icon easter = new ImageIcon("Label verde.png");
+    JLabel fundo=new JLabel();
+    Icon back =new ImageIcon("background.PNG");
+    Font font = new Font("Arial",Font.BOLD,20);
     
    
 
     public Printar() {
-
-        setBounds(600, 600, 500, 600);
+setBounds(600, 600, 500, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setTitle("2048 by Giuly and Vking");
@@ -89,17 +92,18 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         //teladewin.setBounds(95, 135, 300, 300);
         //teladewin.setIcon(win);
         
+        
         background = new JPanel();
         background.setBackground(Color.DARK_GRAY);
+        add(background);
+
         
         easteregg.setIcon(easter);
         easteregg.setBounds(470,550,4,3);
         add(easteregg);
+
         
-        pontuacao.setBounds(80,0,100,100);
-        add(pontuacao);
-        
-        score.setBounds(150, 0, 100, 100);
+        score.setBounds(185, 0, 100, 100);
         add(score);
         
         
@@ -117,6 +121,10 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
 
         setaEsquerda.setBounds(25, 225, 100, 150);
         add(setaEsquerda);
+
+         fundo.setBounds(0, 0, 500, 600);
+        fundo.setIcon(back);
+        add(fundo);
 
         setaDireita.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {

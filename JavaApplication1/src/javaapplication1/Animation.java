@@ -18,11 +18,12 @@ public class Animation extends Thread{
     
     public int aux,x,y;
 
+
     ImageIcon inicial = new ImageIcon("blocoincial.png");
     Icon bloco2 = new ImageIcon("bloco2.png");
-    Icon bloco2frag = new ImageIcon("bloco2frag.gif");
+    Icon bloco2frag = new ImageIcon("bloco2aument.gif");
     Icon bloco4 = new ImageIcon("bloco4.png");
-    Icon bloco4frag = new ImageIcon("bloco4frag.gif");
+    Icon bloco4frag = new ImageIcon("bloco4aument.gif");
     Icon bloco8 = new ImageIcon("bloco8.png");
     Icon bloco8frag = new ImageIcon("bloco8frag.gif");
     Icon bloco16 = new ImageIcon("bloco16.png");
