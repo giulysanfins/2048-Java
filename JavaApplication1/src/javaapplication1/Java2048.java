@@ -26,6 +26,7 @@ public class Java2048 {
         
         
         janela.painel();
+        
         //Captura tecla=new Captura();
         //Janela janela = new Janela();
         //janela.painel();

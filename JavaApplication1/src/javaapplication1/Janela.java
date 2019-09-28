@@ -5,15 +5,23 @@
  */
 package javaapplication1;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 
 public class Janela extends JFrame implements ActionListener {
 
@@ -23,9 +31,13 @@ public class Janela extends JFrame implements ActionListener {
     JButton creditos = new JButton("Creditos");
     JButton sair = new JButton("Sair");
     Game g = new Game();
+ 
+
 
     public void painel() {
 
+        
+        
         setLayout(null); //setando layout como nulo para posicionar botoes
         foto.setBounds(0, 0, 500, 600);
         add(foto);
@@ -47,6 +59,23 @@ public class Janela extends JFrame implements ActionListener {
         //setFocusable(true);
     }
 
+ 
+    
+    
+  /*  public class teste extends Thread {
+ public void run() {
+  executar = false;
+  while(true){
+      play("baby");
+      try{sleep(40000);}catch(Exception erro){}
+      play("baby");
+  }
+ }
+}*/
+    
+    
+    
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         foto.setVisible(false);
@@ -54,7 +83,13 @@ public class Janela extends JFrame implements ActionListener {
         creditos.setVisible(false);
         sair.setVisible(false);
         dispose();
+        //play("baby");
         Printar p = new Printar();
+        p.run();
+        som som = new som();
+        som.executaSom("C:\\Users\\Sergio\\Desktop\\JavaApplication1\\baby.wav");
+          
+         
 
     }
 
