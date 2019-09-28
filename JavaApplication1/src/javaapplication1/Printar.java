@@ -13,6 +13,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -75,10 +77,12 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     Icon back =new ImageIcon("background.PNG");
     Font font = new Font("Arial",Font.BOLD,20);
    
-   
 
     public Printar() {
+        
+      
 setBounds(600, 600, 500, 600);
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setTitle("2048 by Giuly and Vking");
@@ -87,19 +91,15 @@ setBounds(600, 600, 500, 600);
         setFocusable(true);
         setVisible(true);
         setLocationRelativeTo(null);
-        //teladewin.setVisible(true);
-        //add(teladewin);
-        //teladewin.setBounds(95, 135, 300, 300);
-        //teladewin.setIcon(win);
         
-        
+       
         background = new JPanel();
         background.setBackground(Color.DARK_GRAY);
         add(background);
 
         
         easteregg.setIcon(easter);
-        easteregg.setBounds(470,550,4,3);
+        easteregg.setBounds(0,400,50,50);
         add(easteregg);
 
         
@@ -238,7 +238,32 @@ setBounds(600, 600, 500, 600);
                
         });
         
-        easteregg.addMouseListener(new MouseAdapter() {
+                                                easteregg.addMouseListener(new MouseAdapter() {
+                                            public void mouseClicked(MouseEvent e) {
+                                                System.out.println("COMPILOU");
+                                                easteregg.setVisible(false);
+
+                                                for (int i = 0; i < 4; i++) {
+                                                    for (int j = 0; j < 4; j++) {
+                                                        gameBoard[i][j] = 0;
+                                                    }
+                                                }
+
+                                                for (int i = 0; i < 4; i++) {
+                                                    for (int j = 0; j < 4; j++) {
+
+                                                        gameBoard[i][j] = 0;
+                                                        gameBoard[2][3] = 1024;
+                                                        gameBoard[2][2] = 1024;
+                                                        aux = gameBoard[i][j];
+                                                        verificar(aux, i, j,0);
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                        );
+       /*easteregg.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) { //primeiro
                 System.out.println("COMPILOU");
                 easteregg.setVisible(false);
@@ -298,10 +323,64 @@ setBounds(600, 600, 500, 600);
                 );
 
             }
-        });
+        });*/
 
     }
 
+    public void run() { //funcao chamada na Janela.java
+        Runnable Run = new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+
+                    try {
+                        Thread.sleep(10);
+                    } catch (Exception e) {
+                    }
+
+                   if (easteregg.getX() < 420 && easteregg.getY() >399) { //x=0 y=400
+
+                       easteregg.setBounds(easteregg.getX() + 1, 480, 50, 50); //getx420
+                    }
+                   
+                    if (easteregg.getX() >=420 && easteregg.getY() <= 480  ) {
+
+                        // easteregg.setBounds(10, 10, 50, 50);        //canto direito inf x=420 y =480 sup dir x=420 y=10 sup esq x=10 y=10
+                       easteregg.setBounds(420, easteregg.getY() - 1, 50, 50);
+                    }
+                    
+
+                     if( easteregg.getX() <= 420 && easteregg.getY() <=10 ){
+                       
+                      easteregg.setBounds(easteregg.getX()-1, 10, 50, 50); //ir
+                  }
+                     if(easteregg.getX()>=420 && easteregg.getY()<=10){
+                         easteregg.setBounds(420,easteregg.getY()-1,50,50);
+                         
+                     }
+                     if(easteregg.getX()<=10 && easteregg.getY()<=400){
+                        // System.out.println("oi");
+                         easteregg.setBounds(0,easteregg.getY()+1,50,50);
+                         
+                     }
+                     
+                     
+                     
+                     //gety = 10
+                    
+                }
+            }
+            
+        };
+        
+        Thread hello = new Thread(Run);
+        hello.start();
+        
+
+    }
+    
+    
+    
     @Override
     public void keyPressed(KeyEvent e) {
 
@@ -492,6 +571,7 @@ setBounds(600, 600, 500, 600);
             Numblocos[x][y].setIcon(bloco1024);
         }
         if (aux == 2048) {
+            setVisible(false);
             Win winner = new Win();
             Numblocos[x][y].setIcon(bloco2048);
         }
@@ -536,6 +616,8 @@ setBounds(600, 600, 500, 600);
 
     public static void main(String args[]) {
 
+       
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Printar().setVisible(true);

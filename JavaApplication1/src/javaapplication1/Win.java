@@ -32,6 +32,7 @@ public class Win extends JFrame{
     
     Icon Win = new ImageIcon("tela de win2.png");
     public Win(){
+        
         setLocationRelativeTo(null);
         teladeWin.setIcon(Win);
         
@@ -49,8 +50,9 @@ public class Win extends JFrame{
         
                 botaoreniciar.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                dispose();
+                
                 reiniciar();
+                matriz.run(); //rodando a thread
             }
             });
         

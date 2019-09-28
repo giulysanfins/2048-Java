@@ -85,14 +85,22 @@ public class Animation extends Thread{
         }
         if (aux == 64) {
             Numblocos[x][y].setIcon(bloco64);
+            try{Thread.sleep(200);}catch(Exception e){}
+            Numblocos[x][y].setIcon(bloco64);      
         }
         if (aux == 128) {
            Numblocos[x][y].setIcon(bloco128);
+           try{Thread.sleep(200);}catch(Exception e){}
+            Numblocos[x][y].setIcon(bloco128);
         }
         if (aux == 256) {
             Numblocos[x][y].setIcon(bloco256);
+            try{Thread.sleep(200);}catch(Exception e){}
+            Numblocos[x][y].setIcon(bloco256);
         }
         if (aux == 512) {
+            Numblocos[x][y].setIcon(bloco512);
+            try{Thread.sleep(200);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco512);
         }
         if (aux == 1024) {

@@ -314,6 +314,7 @@ public class Game {
         flagaux=0;
         setN(0);
         if (flagdown == 0 && flagup == 0 && flagleft == 0 && flagright == 0) {
+
             lose looser = new lose();
         }
         flagcont=0;

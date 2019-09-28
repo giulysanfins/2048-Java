@@ -55,6 +55,7 @@ public class Janela extends JFrame implements ActionListener {
         sair.setVisible(false);
         dispose();
         Printar p = new Printar();
+        p.run();
 
     }
 
