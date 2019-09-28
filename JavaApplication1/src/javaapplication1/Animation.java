@@ -33,7 +33,7 @@ public class Animation extends Thread{
     Icon bloco64 = new ImageIcon("bloco64.png");
     Icon bloco64frag = new ImageIcon("bloco64aument.gif");
     Icon bloco128 = new ImageIcon("bloco128.png");
-    Icon bloco123frag = new ImageIcon("bloco128ument.gif");
+    Icon bloco128frag = new ImageIcon("bloco128ument.gif");
     Icon bloco256 = new ImageIcon("bloco256.png");
     Icon bloco256frag = new ImageIcon("bloco256aument.gif");
     Icon bloco512 = new ImageIcon("bloco512.png");
@@ -84,22 +84,22 @@ public class Animation extends Thread{
             Numblocos[x][y].setIcon(bloco32);
         }
         if (aux == 64) {
-            Numblocos[x][y].setIcon(bloco64);
+            Numblocos[x][y].setIcon(bloco64frag);
             try{Thread.sleep(200);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco64);      
         }
         if (aux == 128) {
-           Numblocos[x][y].setIcon(bloco128);
+           Numblocos[x][y].setIcon(bloco128frag);
            try{Thread.sleep(200);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco128);
         }
         if (aux == 256) {
-            Numblocos[x][y].setIcon(bloco256);
+            Numblocos[x][y].setIcon(bloco256frag);
             try{Thread.sleep(200);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco256);
         }
         if (aux == 512) {
-            Numblocos[x][y].setIcon(bloco512);
+            Numblocos[x][y].setIcon(bloco512frag);
             try{Thread.sleep(200);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco512);
         }
@@ -109,6 +109,7 @@ public class Animation extends Thread{
             Numblocos[x][y].setIcon(bloco1024);
         }
         if (aux == 2048) {
+            //dispose();
             Win winner = new Win();
             Numblocos[x][y].setIcon(bloco2048);
         }

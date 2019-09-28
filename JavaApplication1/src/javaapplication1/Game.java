@@ -292,7 +292,7 @@ public class Game {
         return gameBoard;
     }
 
-    public void verificarlooser(int[][] gameBoard) {
+    public int verificarlooser(int[][] gameBoard) {
 
         int[][] matrizaux = new int[4][4];//verificar loose
 
@@ -314,10 +314,13 @@ public class Game {
         flagaux=0;
         setN(0);
         if (flagdown == 0 && flagup == 0 && flagleft == 0 && flagright == 0) {
-
-            lose looser = new lose();
+            //dispose();
+            //lose looser = new lose();
+            flagcont=0;
+            return 1;
         }
         flagcont=0;
+        return 0;
     }
 
     public int[][] getGameBoard() {

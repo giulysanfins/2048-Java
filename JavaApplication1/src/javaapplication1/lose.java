@@ -46,6 +46,7 @@ public class lose extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 dispose();
                 reiniciar();
+                matriz.run(); //rodando a thread
             }
             });
         

@@ -25,13 +25,11 @@ public class Win extends JFrame{
     Printar matriz= new Printar();
     int[][] matrizaux=new int[4][4];
     
-    //Icon reniciar = new ImageIcon("Label verde.png");
-    //Icon loose = new ImageIcon("derrota.png");
-    //Icon sair = new ImageIcon("Label verde.png");
-  
     
     Icon Win = new ImageIcon("tela de win2.png");
     public Win(){
+       
+        
         
         setLocationRelativeTo(null);
         teladeWin.setIcon(Win);
@@ -50,7 +48,7 @@ public class Win extends JFrame{
         
                 botaoreniciar.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                
+                dispose();
                 reiniciar();
                 matriz.run(); //rodando a thread
             }
@@ -74,15 +72,18 @@ public class Win extends JFrame{
     
     
      public void reiniciar(){
+         Game matrizgame=new Game();
         matriz.getGameBoard();
         for (int i = 0; i < 4; i++) {
             for(int j=0;j<4;j++)
             {
+
                 matrizaux[i][j]=0;
             }
         }
         matriz.setGameBoard(matrizaux);
-       
+        matrizgame.setGameBoard(matrizaux);
+      // matriz.setN
     }
     
 }
