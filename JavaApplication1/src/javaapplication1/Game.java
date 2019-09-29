@@ -69,7 +69,7 @@ public class Game {
     public int moveUp(int[][] gameBoard,int vet[],int n) {
         System.out.println("Movendo cima");
         int k = 1, x = 0, auxX = -1, flag = 0;
-
+        //flagaux=0;
         for (int y = 0; y < 4; y++) {
             for (int j = 0; j < 3; j++) {
                 x = k;
@@ -122,7 +122,7 @@ public class Game {
     public int moveDown(int[][] gameBoard,int vet[],int n) {
         int k = 2, x, auxX = -1, flag = 0;
         System.out.println("Movendo baixo");
-        
+        //flagaux=0;
         //gameBoard[0][2]=2048;
         for (int y = 3; y >= 0; y--) {
             for (int j = 0; j < 3; j++) {
@@ -179,7 +179,7 @@ public class Game {
     public int moveRight(int[][] gameBoard,int[] vet,int n) {
         int k = 2, y, auxY = -1, flag = 0;
         System.out.println("Movendo direita");
-
+        //flagaux=0;
         for (int x = 3; x >= 0; x--) {
             for (int j = 0; j < 3; j++) {
                 y = k;
@@ -233,7 +233,7 @@ public class Game {
     public int moveLeft(int[][] gameBoard,int vet[],int n) {
         int k = 1, y, auxY = -1, flag = 0;
         System.out.println("Movendo esquerda");
-
+        //flagaux=0;
         for (int x = 0; x < 4; x++) {
             for (int j = 0; j < 3; j++) {
                 y = k;
