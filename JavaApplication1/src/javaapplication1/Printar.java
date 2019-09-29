@@ -62,7 +62,19 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     Icon bloco16frag = new ImageIcon("bloco16frag.gif");
     Icon bloco32 = new ImageIcon("bloco32.png");
     Icon bloco32frag = new ImageIcon("bloco32frag.gif");
-    ;
+    
+    ImageIcon bloco2frag2 = new ImageIcon("bloco2treme.gif");
+    ImageIcon bloco4frag2 = new ImageIcon("bloco4treme.gif");
+    ImageIcon bloco8frag2 = new ImageIcon("bloco8treme.gif");
+    ImageIcon bloco16frag2 = new ImageIcon("bloco16treme.gif");
+    ImageIcon bloco32frag2 = new ImageIcon("bloco32treme.gif");
+    ImageIcon bloco64frag2 = new ImageIcon("bloco64treme.gif");
+    ImageIcon bloco128frag2 = new ImageIcon("bloco128treme.gif");
+    ImageIcon bloco256frag2 = new ImageIcon("bloco256treme.gif");
+    ImageIcon bloco512frag2 = new ImageIcon("bloco512treme.gif");
+    ImageIcon bloco1024frag2 = new ImageIcon("bloco1024treme.gif");
+    ImageIcon bloco10242 = new ImageIcon("bloco-1024.gif");
+    
     Icon bloco64 = new ImageIcon("bloco64.png");
     Icon bloco128 = new ImageIcon("bloco128.png");
     Icon bloco256 = new ImageIcon("bloco256.png");
@@ -396,16 +408,70 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
 
     public void verificar(int aux, int y, int x, int flag) {
 
+        if (flag == 0) {
+            if (aux == 0) {
+                Numblocos[x][y].setIcon(inicial);
+            }
+            if (aux == 2) {
+                bloco2frag2.getImage().flush();
+                Numblocos[x][y].setIcon(bloco2frag2);
+            }
+            if (aux == 4) {
+                bloco4frag2.getImage().flush();
+                Numblocos[x][y].setIcon(bloco4frag2);
+            }
+            if (aux == 8) {
+                bloco8frag2.getImage().flush();
+                Numblocos[x][y].setIcon(bloco8frag2);
+            }
+            if (aux == 16) {
+                bloco16frag2.getImage().flush();
+                Numblocos[x][y].setIcon(bloco16frag2);
+            }
+            if (aux == 32) {
+                bloco32frag2.getImage().flush();
+                Numblocos[x][y].setIcon(bloco32frag2);
+            
+            }
+            if (aux == 64) {
+                bloco64frag2.getImage().flush();
+                Numblocos[x][y].setIcon(bloco64frag2);
+            }
+            if (aux == 128) {
+                bloco128frag2.getImage().flush();
+                Numblocos[x][y].setIcon(bloco128frag2);
+            }
+            if (aux == 256) {
+                bloco256frag2.getImage().flush();
+                Numblocos[x][y].setIcon(bloco256frag2);
+            }
+            if (aux == 512) {
+                bloco512frag2.getImage().flush();
+                Numblocos[x][y].setIcon(bloco512frag2);
+            }
+            if (aux == 1024) {
+                bloco1024frag2.getImage().flush();
+                Numblocos[x][y].setIcon(bloco1024frag2);
+            }
+            if (aux == 2048) {
+                setVisible(false);
+                dispose();
+                Win winner = new Win();
+                Numblocos[x][y].setIcon(bloco2048);
+            }
+        } else {
             Animation anim = new Animation();
             anim.setAux(aux);
             anim.setX(x);
             anim.setY(y);
             if (aux == 2048) {
                 dispose();
-                anim.run(Numblocos,flag);
+                anim.run(Numblocos);
             } else {
-                anim.run(Numblocos,flag);
+                anim.run(Numblocos);
             }
+        }
+    
         
     }
 

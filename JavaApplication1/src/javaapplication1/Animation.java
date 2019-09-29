@@ -41,94 +41,18 @@ public class Animation extends Thread{
     Icon bloco1024 = new ImageIcon("bloco-1024.gif");
     Icon bloco1024frag = new ImageIcon("bloco1024aument.gif");
     Icon bloco2048 = new ImageIcon("bloco2048.png");
-    
-    Icon bloco2frag2 = new ImageIcon("bloco2frag.gif");
-    Icon bloco4frag2 = new ImageIcon("bloco4frag.gif");
-    Icon bloco8frag2 = new ImageIcon("bloco8frag.gif");
-    Icon bloco16frag2 = new ImageIcon("bloco16frag.gif");
-    Icon bloco32frag2 = new ImageIcon("bloco32frag.gif");
-    Icon bloco64frag2 = new ImageIcon("bloco64frag.gif");
-    Icon bloco128frag2 = new ImageIcon("bloco128frag.gif");
-    Icon bloco256frag2 = new ImageIcon("bloco256frag.gif");
-    Icon bloco512frag2 = new ImageIcon("bloco512frag.gif");
-    Icon bloco1024frag2 = new ImageIcon("bloco1024frag.gif");
-    Icon bloco10242 = new ImageIcon("bloco-1024.gif");
-    
-    
+
     public Animation() {
 
     }
     
     
-    public void run(JLabel Numblocos[][],int flag){
+    public void run(JLabel Numblocos[][]){
        Runnable Run = new Runnable() {
             public void run() {
-        if(flag==0){
-            if(aux==0){
-            Numblocos[x][y].setIcon(inicial);
-            }
-            if (aux == 2) {
-
-            Numblocos[x][y].setIcon(bloco2frag2);
-            try{Thread.sleep(250);}catch(Exception e){}
-            Numblocos[x][y].setIcon(bloco2);
-
+        if(aux==0){
+             Numblocos[x][y].setIcon(inicial);
         }
-        if (aux == 4) {
-
-            Numblocos[x][y].setIcon(bloco4frag2);
-            try{Thread.sleep(250);}catch(Exception e){}
-            Numblocos[x][y].setIcon(bloco4);
-
-        }
-        if (aux == 8) {
-            Numblocos[x][y].setIcon(bloco8frag2);
-            try{Thread.sleep(250);}catch(Exception e){}
-            Numblocos[x][y].setIcon(bloco8);
-        }
-        if (aux == 16) {
-            Numblocos[x][y].setIcon(bloco16frag2);
-            try{Thread.sleep(250);}catch(Exception e){}
-            Numblocos[x][y].setIcon(bloco16);
-            
-        }
-        if (aux == 32) {
-            Numblocos[x][y].setIcon(bloco32frag2);
-            try{Thread.sleep(250);}catch(Exception e){}
-            Numblocos[x][y].setIcon(bloco32);
-        }
-        if (aux == 64) {
-            Numblocos[x][y].setIcon(bloco64frag2);
-            try{Thread.sleep(250);}catch(Exception e){}
-            Numblocos[x][y].setIcon(bloco64);      
-        }
-        if (aux == 128) {
-           Numblocos[x][y].setIcon(bloco128frag2);
-           try{Thread.sleep(250);}catch(Exception e){}
-            Numblocos[x][y].setIcon(bloco128);
-        }
-        if (aux == 256) {
-            Numblocos[x][y].setIcon(bloco256frag2);
-            try{Thread.sleep(250);}catch(Exception e){}
-            Numblocos[x][y].setIcon(bloco256);
-        }
-        if (aux == 512) {
-            Numblocos[x][y].setIcon(bloco512frag2);
-            try{Thread.sleep(250);}catch(Exception e){}
-            Numblocos[x][y].setIcon(bloco512);
-        }
-        if (aux == 1024) {
-            Numblocos[x][y].setIcon(bloco1024frag2);
-            try{Thread.sleep(1000);}catch(Exception e){}
-            Numblocos[x][y].setIcon(bloco1024);
-        }
-        if (aux == 2048) {
-            //dispose();
-            Win winner = new Win();
-            Numblocos[x][y].setIcon(bloco2048);
-        }
-        }else{
-
         if (aux == 2) {
 
             Numblocos[x][y].setIcon(bloco2frag);
@@ -145,43 +69,43 @@ public class Animation extends Thread{
         }
         if (aux == 8) {
             Numblocos[x][y].setIcon(bloco8frag);
-            try{Thread.sleep(250);}catch(Exception e){}
+            try{Thread.sleep(200);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco8);
         }
         if (aux == 16) {
             Numblocos[x][y].setIcon(bloco16frag);
-            try{Thread.sleep(250);}catch(Exception e){}
+            try{Thread.sleep(200);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco16);
             
         }
         if (aux == 32) {
             Numblocos[x][y].setIcon(bloco32frag);
-            try{Thread.sleep(250);}catch(Exception e){}
+            try{Thread.sleep(200);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco32);
         }
         if (aux == 64) {
             Numblocos[x][y].setIcon(bloco64frag);
-            try{Thread.sleep(250);}catch(Exception e){}
+            try{Thread.sleep(200);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco64);      
         }
         if (aux == 128) {
            Numblocos[x][y].setIcon(bloco128frag);
-           try{Thread.sleep(250);}catch(Exception e){}
+           try{Thread.sleep(200);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco128);
         }
         if (aux == 256) {
             Numblocos[x][y].setIcon(bloco256frag);
-            try{Thread.sleep(250);}catch(Exception e){}
+            try{Thread.sleep(200);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco256);
         }
         if (aux == 512) {
             Numblocos[x][y].setIcon(bloco512frag);
-            try{Thread.sleep(250);}catch(Exception e){}
+            try{Thread.sleep(200);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco512);
         }
         if (aux == 1024) {
             Numblocos[x][y].setIcon(bloco1024frag);
-            try{Thread.sleep(1200);}catch(Exception e){}
+            try{Thread.sleep(1000);}catch(Exception e){}
             Numblocos[x][y].setIcon(bloco1024);
         }
         if (aux == 2048) {
@@ -189,7 +113,6 @@ public class Animation extends Thread{
             Win winner = new Win();
             Numblocos[x][y].setIcon(bloco2048);
         }
-            }
             }
         };
         Thread Ani = new Thread(Run);
