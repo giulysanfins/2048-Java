@@ -30,7 +30,6 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
 
     //JLabel blackground = new JLabel(new ImageIcon(getClass().getResource("blackground.png")));
     Game matriz = new Game();
-
     public int[][] gameBoard = matriz.FirstNumber();
     Janela janela = new Janela();
     JPanel background = new JPanel();
@@ -47,6 +46,9 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     JLabel setaDireita = new JLabel(setaDireita1);
     ImageIcon setaEsquerda1 = new ImageIcon(getClass().getResource("seta left.png"));
     JLabel setaEsquerda = new JLabel(setaEsquerda1);
+    ImageIcon botaosair1 = new ImageIcon(getClass().getResource("seta left.png"));
+    JLabel botaosair = new JLabel(botaosair1);
+    
     JLabel score = new JLabel();
     JButton jogo = new JButton("Jogo");
     JButton creditos = new JButton("Creditos");
@@ -134,9 +136,30 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         setaEsquerda.setBounds(25, 225, 100, 150);
         add(setaEsquerda);
 
+        
+        botaosair.setBounds(400,400,100,150);
+        add(botaosair);
+        
         fundo.setBounds(0, 0, 500, 600);
         fundo.setIcon(back);
         add(fundo);
+        
+        botaosair.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0; j < 4; j++) {
+
+                        gameBoard[i][j] = 0;
+                        
+                    }
+                }
+                matriz.setGameBoard(gameBoard);
+                matriz.addNewNumbers(gameBoard);
+                moverparabaixo();
+            }
+            
+
+        });
 
         setaDireita.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {

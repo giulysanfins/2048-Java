@@ -141,7 +141,7 @@ public class Janela extends JFrame implements ActionListener {
         Printar p = new Printar();
         p.run();
         som som = new som();
-        som.executaSom("C:\\Users\\Giuliano\\Desktop\\2048-Java-Anima-o\\JavaApplication1\\baby.wav");
+        som.executaSom("baby.wav");
 
     }
 
