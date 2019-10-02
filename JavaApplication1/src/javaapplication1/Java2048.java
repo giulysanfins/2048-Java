@@ -5,17 +5,9 @@ package javaapplication1;
  * @author 17142837
  */
 public class Java2048 {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        //int aux[][] = null;
-        Game g = new Game();
-
+        Game g = new Game(); //inicializa o game
         Janela janela = new Janela();
-
-        janela.painel();
+        janela.painel(); //janela coloca o painel e chama o printar
     }
-
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaapplication1;
 
 import java.util.ArrayList;
@@ -14,7 +9,8 @@ import java.util.Random; // pro numero random
  */
 public class Game {
 
-    private int[][] gameBoard;
+    private int[][] gameBoard; //matriz principal
+ 
     
     public int score=0,flagcont=0;
 
@@ -31,7 +27,7 @@ public class Game {
 
     }
 
-    public void printArray() {
+    public void printArray() { //função para printar a gameboard
         for (int[] x : gameBoard) {
 
             System.out.format("%6d%6d%6d%6d%n", x[0], x[1], x[2], x[3]);
@@ -40,7 +36,7 @@ public class Game {
 
     }
 
-    public void addNewNumbers(int[][] gameBoard) {
+    public void addNewNumbers(int[][] gameBoard) { //funcao para escolher numeros aleatorios e add esses numeros
         System.out.println("Adicionando numero");
         ArrayList<Integer> emptySpacesX = new ArrayList();
         ArrayList<Integer> emptySpacesY = new ArrayList();
@@ -57,49 +53,46 @@ public class Game {
         int escolha = r.nextInt(emptySpacesX.size());
         int escolhaNumero = r.nextInt(10);
         int newNumber = 2;
-        if (escolhaNumero == 0 || escolhaNumero == 5) {
+        if (escolhaNumero == 0 || escolhaNumero == 5) { //20% de chance de cair um numero "4"
             newNumber = 4;
         }
 
-        int X = emptySpacesX.get(escolha);
+        int X = emptySpacesX.get(escolha); //coordenada da posicao pra spawnar
         int Y = emptySpacesY.get(escolha);
         gameBoard[X][Y] = newNumber;
     }
 
-    public int moveUp(int[][] gameBoard,int vet[],int n) {
+    public int moveUp(int[][] gameBoard,int vet[],int n) {//movimento para cima
         System.out.println("Movendo cima");
         int k = 1, x = 0, auxX = -1, flag = 0;
-        //flagaux=0;
+
         for (int y = 0; y < 4; y++) {
             for (int j = 0; j < 3; j++) {
-                x = k;
+                x = k;//
                 while (x > 0) {
-                    if (gameBoard[x - 1][y] == 0) {
+                    if (gameBoard[x - 1][y] == 0) {//caso em que nao é somado e apenas faz a troca de uma posição com a outra
                         gameBoard[x - 1][y] = gameBoard[x][y];
                         gameBoard[x][y] = 0;
 
-                        if (gameBoard[x][y] != 0 || gameBoard[x - 1][y] != 0) {
+                        if (gameBoard[x][y] != 0 || gameBoard[x - 1][y] != 0) {//
                             flagaux = 1;
                         }
-                    } else if (gameBoard[x][y] == gameBoard[x - 1][y] && auxX != x - 1 && auxX != x) {
-                        if(flagcont==0){
-                            
+                    } else if (gameBoard[x][y] == gameBoard[x - 1][y] && auxX != x - 1 && auxX != x) {// caso colisão, em que se é somado na posição,
+                                                                                                      //flags para evitar casos de erros de somar em 1 movimento
+                        if(flagcont==0){//para quando fazer verificar de lose não adicionar score
                             score += gameBoard[x][y] + gameBoard[x - 1][y];
-                            //prin.movimento(flag,x,y);
                         }
-                        gameBoard[x - 1][y] = (gameBoard[x - 1][y]) + (gameBoard[x][y]);
-                        gameBoard[x][y] = 0;
+                        gameBoard[x - 1][y] = (gameBoard[x - 1][y]) + (gameBoard[x][y]);//soma das posições
+                        gameBoard[x][y] = 0;//zera a posição anterior
                         auxX = x - 1;
                         flag = 1;
-                         flagaux = 1;
-                         if(flagcont==0){
-                         System.out.println(n);
-                        vet[n]=x-1;
-                        n++;
-                        vet[n]=y;
-                        System.out.println(n);
-                        n++;
-                         }
+                        flagaux = 1;//verifica se foi feita a soma
+                        if(flagcont==0){// flag para evitar quando for a verificação
+                            vet[n]=x-1;// vetor salva as posições onde foram feito as somas
+                            n++;//posição do vetor
+                            vet[n]=y;
+                            n++;
+                        }
                     }
                     x--;
                 }
@@ -107,23 +100,21 @@ public class Game {
                 k++;
             }
             auxX = -1;
-
             k = 1;
         }
-        if (flagaux == 1&&flagcont==0) {
+        if (flagaux == 1&&flagcont==0) {//se foi feito a soma e nao for verificação add numero novo
             addNewNumbers(gameBoard);
         }
         if(flagcont==0){
         setN(n);
-        setVet(vet);}
+        setVet(vet);
+        }
         return flag;
     }
 
     public int moveDown(int[][] gameBoard,int vet[],int n) {
         int k = 2, x, auxX = -1, flag = 0;
         System.out.println("Movendo baixo");
-        //flagaux=0;
-        //gameBoard[0][2]=2048;
         for (int y = 3; y >= 0; y--) {
             for (int j = 0; j < 3; j++) {
                 x = k;
@@ -140,7 +131,6 @@ public class Game {
                         if(flagcont==0)
                         {
                             score += gameBoard[x][y] + gameBoard[x+1][y];
-                           // prin.movimento(flag,x,y);
                         }
                         gameBoard[x + 1][y] = (gameBoard[x + 1][y]) + (gameBoard[x][y]);
                         gameBoard[x][y] = 0;
@@ -148,11 +138,9 @@ public class Game {
                         flag = 1;
                         flagaux = 1;
                         if(flagcont==0){
-                        System.out.println(n);
                         vet[n]=x+1;
                         n++;
                         vet[n]=y;
-                        System.out.println(n);
                         n++;
                         
                         }
@@ -179,7 +167,6 @@ public class Game {
     public int moveRight(int[][] gameBoard,int[] vet,int n) {
         int k = 2, y, auxY = -1, flag = 0;
         System.out.println("Movendo direita");
-        //flagaux=0;
         for (int x = 3; x >= 0; x--) {
             for (int j = 0; j < 3; j++) {
                 y = k;
@@ -187,16 +174,12 @@ public class Game {
                     if (gameBoard[x][y + 1] == 0) {
                         gameBoard[x][y + 1] = gameBoard[x][y];
                         gameBoard[x][y] = 0;
-
                          if (gameBoard[x][y] != 0 || gameBoard[x][y + 1] != 0) {
                             flagaux = 1;
                         }
-                    
                     } else if (gameBoard[x][y] == gameBoard[x][y + 1] && auxY != y + 1 && auxY != y) {
-                        if(flagcont==0){
-                            
+                        if(flagcont==0){               
                             score+= gameBoard[x][y] + gameBoard[x][y+1];
-                           // prin.movimento(flag,x,y);
                         }
                         gameBoard[x][y + 1] = (gameBoard[x][y + 1]) + (gameBoard[x][y]);
                         gameBoard[x][y] = 0;
@@ -204,18 +187,14 @@ public class Game {
                         flag = 1;
                         flagaux = 1;
                         if(flagcont==0){
-                        System.out.println(n);
                         vet[n]=x;
                         n++;
                         vet[n]=y+1;
-                        System.out.println(n);
                         n++;
-                        
                         }
                     }
                     y++;
                 }
-
                 k--;
             }
             auxY = -1;
@@ -233,24 +212,19 @@ public class Game {
     public int moveLeft(int[][] gameBoard,int vet[],int n) {
         int k = 1, y, auxY = -1, flag = 0;
         System.out.println("Movendo esquerda");
-        //flagaux=0;
         for (int x = 0; x < 4; x++) {
             for (int j = 0; j < 3; j++) {
                 y = k;
                 while (y > 0) {
                     if (gameBoard[x][y - 1] == 0) {
                         gameBoard[x][y - 1] = gameBoard[x][y];
-                        gameBoard[x][y] = 0;
-       
+                        gameBoard[x][y] = 0;      
                         if ((gameBoard[x][y] != 0) || (gameBoard[x][y - 1] != 0)) {
                             flagaux = 1;
-                        }
-                       
-
+                        }                      
                     } else if (gameBoard[x][y] == gameBoard[x][y - 1] && auxY != y - 1 && auxY != y) {
                         if(flagcont==0){
                             score += gameBoard[x][y] + gameBoard[x][y-1];
-                             //prin.movimento(flag,x,y);
                         }
                         gameBoard[x][y - 1] = (gameBoard[x][y - 1]) + (gameBoard[x][y]);
                         gameBoard[x][y] = 0;
@@ -258,18 +232,14 @@ public class Game {
                         flag = 1;
                         flagaux = 1;
                         if(flagcont==0){
-                        System.out.println(n);
                         vet[n]=x;
                         n++;
                         vet[n]=y-1;
-                        System.out.println(n);
                         n++;
-                        
                         }
                     }
                     y--;
                 }
-
                 k++;
             }
             auxY = -1;
@@ -277,25 +247,22 @@ public class Game {
         }
         if (flagaux == 1) {
             addNewNumbers(gameBoard);
-        }
-        
+        }       
         if(flagcont==0){
         setN(n);
         setVet(vet);}
         return flag;
-
     }
 
-    public int[][] FirstNumber() {
+    public int[][] FirstNumber() { // quando iniciar o jogo é adicionado 2 numeros
         addNewNumbers(gameBoard);
         addNewNumbers(gameBoard);
         return gameBoard;
     }
 
-    public int verificarlooser(int[][] gameBoard) {
+    public int verificarlooser(int[][] gameBoard) {//verificar derrota 
 
-        int[][] matrizaux = new int[4][4];//verificar loose
-
+        int[][] matrizaux = new int[4][4];
         for (int i = 0; i < 4; i++) {
             System.arraycopy(gameBoard[i], 0, matrizaux[i], 0, 4);
         }
@@ -314,8 +281,6 @@ public class Game {
         flagaux=0;
         setN(0);
         if (flagdown == 0 && flagup == 0 && flagleft == 0 && flagright == 0) {
-            //dispose();
-            //lose looser = new lose();
             flagcont=0;
             return 1;
         }
@@ -354,6 +319,5 @@ public class Game {
     public void setVet(int[] vet) {
         this.vet = vet;
     }
-    
     
 }

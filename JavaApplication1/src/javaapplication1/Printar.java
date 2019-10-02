@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaapplication1;
 
 import java.awt.Color;
@@ -13,8 +8,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,9 +21,9 @@ import javax.swing.JPanel;
  */
 public final class Printar extends javax.swing.JFrame implements KeyListener, ActionListener {
 
-    //JLabel blackground = new JLabel(new ImageIcon(getClass().getResource("blackground.png")));
     Game matriz = new Game();
     public int[][] gameBoard = matriz.FirstNumber();
+    public int[][] matrizAux = new int[4][4];
     Janela janela = new Janela();
     JPanel background = new JPanel();
     JLabel[][] Numblocos = new JLabel[4][4];
@@ -47,8 +40,10 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     ImageIcon setaEsquerda1 = new ImageIcon(getClass().getResource("seta left.png"));
     JLabel setaEsquerda = new JLabel(setaEsquerda1);
     ImageIcon botaosair1 = new ImageIcon("botão voltar cópia.png");
-    JLabel botaosair = new JLabel(botaosair1);
-    
+    JLabel botaoReiniciar = new JLabel(botaosair1);
+    ImageIcon voltarMovimento1 = new ImageIcon("botão voltar cópia.png");
+    JLabel voltarMovimento = new JLabel(voltarMovimento1);
+
     JLabel score = new JLabel();
     JButton jogo = new JButton("Jogo");
     JButton creditos = new JButton("Creditos");
@@ -64,7 +59,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     Icon bloco16frag = new ImageIcon("bloco16frag.gif");
     Icon bloco32 = new ImageIcon("bloco32.png");
     Icon bloco32frag = new ImageIcon("bloco32frag.gif");
-    
+
     ImageIcon bloco2frag2 = new ImageIcon("bloco2treme.gif");
     ImageIcon bloco4frag2 = new ImageIcon("bloco4treme.gif");
     ImageIcon bloco8frag2 = new ImageIcon("bloco8treme.gif");
@@ -76,7 +71,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     ImageIcon bloco512frag2 = new ImageIcon("bloco512treme.gif");
     ImageIcon bloco1024frag2 = new ImageIcon("bloco1024treme.gif");
     ImageIcon bloco10242 = new ImageIcon("bloco-1024.gif");
-    
+
     Icon bloco64 = new ImageIcon("bloco64.png");
     Icon bloco128 = new ImageIcon("bloco128.png");
     Icon bloco256 = new ImageIcon("bloco256.png");
@@ -84,7 +79,6 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     Icon bloco1024 = new ImageIcon("bloco1024.png");
     Icon bloco2048 = new ImageIcon("bloco2048.png");
     Icon win = new ImageIcon("tela de win.PNG");
-    //JLabel pontuacao = new JLabel("Pontuacao ");
     Icon blocoverde = new ImageIcon("Label verde.png");
     JLabel easteregg = new JLabel();
     Icon easter = new ImageIcon("hellokitty.png");
@@ -93,12 +87,9 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     Font font = new Font("Arial", Font.BOLD, 20);
 
     som som = new som();
-    
+
     public Printar() {
 
-        
-         
-          
         setBounds(600, 600, 500, 600);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -136,225 +127,204 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         setaEsquerda.setBounds(25, 225, 100, 150);
         add(setaEsquerda);
 
-        
-        botaosair.setBounds(420,500,50,50);
-        add(botaosair);
-        
+        voltarMovimento.setBounds(420, 500, 50, 50);
+        add(voltarMovimento);
+
+        botaoReiniciar.setBounds(380, 500, 50, 50);
+        add(botaoReiniciar);
+
         fundo.setBounds(0, 0, 500, 600);
         fundo.setIcon(back);
         add(fundo);
-        
-        botaosair.addMouseListener(new MouseAdapter() {
+
+        botaoReiniciar.addMouseListener(new MouseAdapter() { //botao pra reniciar o game
             public void mouseClicked(MouseEvent e) {
                 for (int i = 0; i < 4; i++) {
-                    for (int j = 0; j < 4; j++) {
-
+                    for (int j = 0; j < 4; j++) { //zerando a matriz 
                         gameBoard[i][j] = 0;
-                        
                     }
                 }
-                matriz.setGameBoard(gameBoard);
+                easteregg.setVisible(true);
+                
+                matriz.setGameBoard(gameBoard); //setando a matriz (0)
+                matriz.addNewNumbers(gameBoard); //adicionando novos numeros
                 matriz.addNewNumbers(gameBoard);
-                moverparabaixo();
+                movimento(0, vet, 0);//printar na tela novo jogo
             }
         });
 
-        setaDireita.addMouseListener(new MouseAdapter() {
+        setaDireita.addMouseListener(new MouseAdapter() { //evento seta direita
             public void mouseClicked(MouseEvent e) {
                 moverparadireita();
             }
-
         });
-        setaEsquerda.addMouseListener(new MouseAdapter() {
+
+        setaEsquerda.addMouseListener(new MouseAdapter() {//evento seta esquerda
             public void mouseClicked(MouseEvent e) {
                 moverparaesquerda();
             }
-
         });
-        setaBaixo.addMouseListener(new MouseAdapter() {
+        setaBaixo.addMouseListener(new MouseAdapter() {//evento seta baixo
             public void mouseClicked(MouseEvent e) {
                 moverparabaixo();
             }
-
         });
 
-        setaCima.addMouseListener(new MouseAdapter() {
+        setaCima.addMouseListener(new MouseAdapter() {//evento seta cima
             public void mouseClicked(MouseEvent e) {
                 moverparacima();
             }
-
         });
 
-        easteregg.addMouseListener(new MouseAdapter() {
+        voltarMovimento.addMouseListener(new MouseAdapter() {//volta o movimento feito
+            public void mouseClicked(MouseEvent e) {
+                int vet[] = new int[0];
+                matriz.setGameBoard(matrizAux);
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        gameBoard[i][j] = matrizAux[i][j]; //passando tudo da matriz pro game
+                    }
+                }
+                movimento(0, vet, 0); //chama para printar os numeros              
+            }
+        });
+
+        easteregg.addMouseListener(new MouseAdapter() { //evento clicando na hello kitty
             public void mouseClicked(MouseEvent e) {
                 System.out.println("COMPILOU");
                 easteregg.setVisible(false);
-
- 
-
                 for (int i = 0; i < 4; i++) {
                     for (int j = 0; j < 4; j++) {
-
-                        gameBoard[i][j] = 0;
-                        gameBoard[2][3] = 1024;
+                        gameBoard[i][j] = 0;//zera a matriz inteira 
+                        gameBoard[2][3] = 1024;//spawna 2 blocos de 2014
                         gameBoard[2][2] = 1024;
                         matriz.setGameBoard(gameBoard);
                         aux = gameBoard[i][j];
                         verificar(aux, i, j, 0);
                     }
                 }
-
             }
         }
         );
     }
-    public void moverparadireita(){
-        matriz.setN(0);
-                gameBoard = matriz.getGameBoard();
-                int flaglose=matriz.verificarlooser(gameBoard);
-                derrota(flaglose);
 
-                int flag = matriz.moveRight(gameBoard, vet, n);
-
-                vet = matriz.getVet();
-                n = matriz.getN();
-
-                //print testes
-                for (int i = 0; i < n; i++) {
-                    System.out.println(vet[i]);
-
-                }
-                System.out.println(n);//ate aki...
-
-                movimento(flag, vet, n);
-                matriz.setN(0);
-                n = 0;
-                for (int i = 0; i < n; i++) {
-                    vet[i] = 0;
-
-                }
-        
-    }
-    public void moverparaesquerda(){
-        matriz.setN(0);
-                gameBoard = matriz.getGameBoard();
-                int flaglose=matriz.verificarlooser(gameBoard);
-                derrota(flaglose);
-
-                int flag = matriz.moveLeft(gameBoard, vet, n);
-
-                vet = matriz.getVet();
-                n = matriz.getN();
-
-                //print testes
-                for (int i = 0; i < n; i++) {
-                    System.out.println(vet[i]);
-
-                }
-                System.out.println(n);//ate aki...
-
-                movimento(flag, vet, n);
-                matriz.setN(0);
-                n = 0;
-                for (int i = 0; i < n; i++) {
-                    vet[i] = 0;
-
-                }
-    }
-    
-    public void moverparabaixo(){
-        matriz.setN(0);
-                gameBoard = matriz.getGameBoard();
-                int flaglose=matriz.verificarlooser(gameBoard);
-                derrota(flaglose);
-                int flag = matriz.moveDown(gameBoard, vet, n);
-
-                vet = matriz.getVet();
-                n = matriz.getN();
-
-                //print testes
-                for (int i = 0; i < n; i++) {
-                    System.out.println(vet[i]);
-
-                }
-                System.out.println(n);//ate aki...
-
-                movimento(flag, vet, n);
-                matriz.setN(0);
-                n = 0;
-                for (int i = 0; i < n; i++) {
-                    vet[i] = 0;
-
-                }
-        
-    }
-    public void moverparacima(){
-        matriz.setN(0);
-                gameBoard = matriz.getGameBoard();
-                int flaglose=matriz.verificarlooser(gameBoard);
-                derrota(flaglose);
-                int flag = matriz.moveUp(gameBoard, vet, n);
-
-                vet = matriz.getVet();
-                n = matriz.getN();
-
-                //print testes
-                for (int i = 0; i < n; i++) {
-                    System.out.println(vet[i]);
-
-                }
-                System.out.println(n);//ate aki...
-
-                movimento(flag, vet, n);
-                matriz.setN(0);
-                n = 0;
-                for (int i = 0; i < n; i++) {
-                    vet[i] = 0;
-
-                }
-        
+    public void voltarmovimento() {
+        for (int x = 0; x < 4; x++) {
+            for (int y = 0; y < 4; y++) {
+                matrizAux[x][y] = gameBoard[x][y]; //salvar a posicao anterior na matriz
+            }
+        }
     }
 
-    public void run() { //funcao chamada na Janela.java
+    public void moverparadireita() {
+        matriz.setN(0);//setar N(tamanho do vetor que pega as posicoes)
+        gameBoard = matriz.getGameBoard(); //joga a var global gameboard na var local gameboard 
+        int flaglose = matriz.verificarlooser(gameBoard);
+        derrota(flaglose); //verificar derrota
+        voltarmovimento(); //se clicar voltarmovimento volta
+        int flag = matriz.moveRight(gameBoard, vet, n);
+
+        vet = matriz.getVet();
+        n = matriz.getN();
+        movimento(flag, vet, n); //faz o movimento
+        matriz.setN(0);
+        n = 0;
+        for (int i = 0; i < n; i++) {
+            vet[i] = 0;
+        }
+
+    }
+
+    public void moverparaesquerda() {
+        matriz.setN(0);
+        gameBoard = matriz.getGameBoard();
+        int flaglose = matriz.verificarlooser(gameBoard);
+        derrota(flaglose);
+
+        voltarmovimento();
+        int flag = matriz.moveLeft(gameBoard, vet, n);
+
+        vet = matriz.getVet();
+        n = matriz.getN();
+
+        movimento(flag, vet, n);
+        matriz.setN(0);
+        n = 0;
+        for (int i = 0; i < n; i++) {
+            vet[i] = 0;
+
+        }
+    }
+
+    public void moverparabaixo() {
+        matriz.setN(0);
+        gameBoard = matriz.getGameBoard();
+        int flaglose = matriz.verificarlooser(gameBoard);
+        derrota(flaglose);
+        voltarmovimento();
+        int flag = matriz.moveDown(gameBoard, vet, n);
+
+        vet = matriz.getVet();
+        n = matriz.getN();
+
+        movimento(flag, vet, n);
+        matriz.setN(0);
+        n = 0;
+        for (int i = 0; i < n; i++) {
+            vet[i] = 0;
+
+        }
+
+    }
+
+    public void moverparacima() {
+        matriz.setN(0);
+        gameBoard = matriz.getGameBoard();
+        int flaglose = matriz.verificarlooser(gameBoard);
+        derrota(flaglose);
+        voltarmovimento();
+        int flag = matriz.moveUp(gameBoard, vet, n);
+
+        vet = matriz.getVet();
+        n = matriz.getN();
+
+        movimento(flag, vet, n);
+        matriz.setN(0);
+        n = 0;
+        for (int i = 0; i < n; i++) {
+            vet[i] = 0;
+
+        }
+
+    }
+
+    public void run() { //funcao chamada na Janela.java PARA rodar a hellokitty - thread
         Runnable Run = new Runnable() {
             @Override
             public void run() {
                 while (true) {
-
                     try {
                         Thread.sleep(10);
                     } catch (Exception e) {
                     }
-
                     if (easteregg.getX() < 420 && easteregg.getY() > 399) { //x=0 y=400
-
                         easteregg.setBounds(easteregg.getX() + 1, 480, 50, 50); //getx420
                     }
-
                     if (easteregg.getX() >= 420 && easteregg.getY() <= 480) {
-
                         // easteregg.setBounds(10, 10, 50, 50);        //canto direito inf x=420 y =480 sup dir x=420 y=10 sup esq x=10 y=10
                         easteregg.setBounds(420, easteregg.getY() - 1, 50, 50);
                     }
-
                     if (easteregg.getX() <= 420 && easteregg.getY() <= 10) {
-
-                        easteregg.setBounds(easteregg.getX() - 1, 10, 50, 50); //ir
+                        easteregg.setBounds(easteregg.getX() - 1, 10, 50, 50); 
                     }
                     if (easteregg.getX() >= 420 && easteregg.getY() <= 10) {
                         easteregg.setBounds(420, easteregg.getY() - 1, 50, 50);
-
                     }
                     if (easteregg.getX() <= 10 && easteregg.getY() <= 400) {
-                        // System.out.println("oi");
                         easteregg.setBounds(0, easteregg.getY() + 1, 50, 50);
-
                     }
-
-                    //gety = 10
                 }
             }
-
         };
 
         Thread hello = new Thread(Run);
@@ -364,7 +334,6 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
 
     @Override
     public void keyPressed(KeyEvent e) {
-
         int codigo = e.getKeyCode(); //atribuindo teclado
         //Seta P/ baixo
         if (e.getKeyCode() == 40 || e.getKeyCode() == KeyEvent.VK_S) { //BAIXO
@@ -377,27 +346,22 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         //Seta P/ direita
         if (e.getKeyCode() == 39 || e.getKeyCode() == KeyEvent.VK_D) { //DIREITA
             moverparadireita();
-
         }
         //Seta P/ esquerda
         if (e.getKeyCode() == 37 || e.getKeyCode() == KeyEvent.VK_A) { //ESQUERDA
             moverparaesquerda();
-
         }
-
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
-    public void printarNumblocos() {
+    public void printarNumblocos() {// printar matriz inicial e dar add na matriz na label
         gameBoard = matriz.getGameBoard();
         for (int x = 0; x < 4; x++) {
             for (int y = 0; y < 4; y++) {
@@ -413,7 +377,6 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
                     Numblocos[x][y].setIcon(bloco2);
                     Numblocos[x][y].setIcon(bloco2frag);
                     Numblocos[x][y].setIcon(bloco2);
-
                 }
                 if (aux == 4) {
                     Numblocos[x][y].setIcon(bloco4);
@@ -427,7 +390,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         }
     }
 
-    public void verificar(int aux, int y, int x, int flag) {
+    public void verificar(int aux, int y, int x, int flag) {//escolher a animacao dependendo do numero enviado em aux
 
         if (flag == 0) {
             if (aux == 0) {
@@ -452,7 +415,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
             if (aux == 32) {
                 bloco32frag2.getImage().flush();
                 Numblocos[x][y].setIcon(bloco32frag2);
-            
+
             }
             if (aux == 64) {
                 bloco64frag2.getImage().flush();
@@ -480,43 +443,39 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
                 Win winner = new Win();
                 Numblocos[x][y].setIcon(bloco2048);
             }
-        } else {
-            Animation anim = new Animation();
+        }else{
+            Animation anim = new Animation(); //instancia da variavel anim
             anim.setAux(aux);
             anim.setX(x);
             anim.setY(y);
             if (aux == 2048) {
-                dispose();
+                dispose();//fechar Jframe antes da chamda da classe
                 anim.run(Numblocos);
             } else {
                 anim.run(Numblocos);
             }
         }
-    
-        
     }
 
-    public void movimento(int flag, int vet[], int n) {
-
-        n--;
+    public void movimento(int flag, int vet[], int n) {//fucao para movimento dos blocos
+        n--;//ajuste do tamanho do vetor de posições
         matriz.setGameBoard(gameBoard);
         gameBoard = matriz.getGameBoard();
         score.setText(Integer.toString(matriz.score));
         score.setForeground(Color.WHITE);
         score.setFont(font);
         matriz.printArray();
-        System.out.println(flag);
 
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 4; x++) {
                 aux = gameBoard[x][y];
-                for (int i = 0; i < n; i = i + 2) {
-                    if (vet[i] == x && vet[i + 1] == y) {
+                for (int i = 0; i < n; i = i + 2) {//N serve para ver o tamanho do vetor que verifica posições onde foram  feito somas 
+                    if (vet[i] == x && vet[i + 1] == y) {//caso a posição seja a msm do vetor manda a flag para verificar
                         verificar(aux, x, y, flag);
                         flaggeral = 1;
                     }
                 }
-                if (flaggeral == 0) {
+                if (flaggeral == 0) { //se nao entrar no if de verificação do vetor é passado 0 na flag da auxiliar
                     verificar(aux, x, y, 0);
                 }
                 posY = posY + 72;
@@ -527,20 +486,15 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         }
         matriz.setN(0);
     }
-    public void derrota(int flaglose){
-        if(flaglose==1){
+
+    public void derrota(int flaglose) {//verifica se nao ha mais movimentos assim declarando derrota
+        if (flaglose == 1) {
             dispose();
-            lose loser=new lose();
+            lose loser = new lose();
         }
     }
-    public static void main(String args[]) {
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Printar().setVisible(true);
-            }
-        });
-    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
