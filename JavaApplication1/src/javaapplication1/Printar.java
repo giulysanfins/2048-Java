@@ -39,7 +39,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     JLabel setaDireita = new JLabel(setaDireita1);
     ImageIcon setaEsquerda1 = new ImageIcon(getClass().getResource("seta left.png"));
     JLabel setaEsquerda = new JLabel(setaEsquerda1);
-    ImageIcon botaosair1 = new ImageIcon("botão voltar cópia.png");
+    ImageIcon botaosair1 = new ImageIcon("reiniciar.png");
     JLabel botaoReiniciar = new JLabel(botaosair1);
     ImageIcon voltarMovimento1 = new ImageIcon("botão voltar cópia.png");
     JLabel voltarMovimento = new JLabel(voltarMovimento1);
@@ -130,7 +130,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         voltarMovimento.setBounds(420, 500, 50, 50);
         add(voltarMovimento);
 
-        botaoReiniciar.setBounds(380, 500, 50, 50);
+        botaoReiniciar.setBounds(250, 500,150, 50);
         add(botaoReiniciar);
 
         fundo.setBounds(0, 0, 500, 600);
