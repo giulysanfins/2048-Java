@@ -46,7 +46,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     JLabel setaDireita = new JLabel(setaDireita1);
     ImageIcon setaEsquerda1 = new ImageIcon(getClass().getResource("seta left.png"));
     JLabel setaEsquerda = new JLabel(setaEsquerda1);
-    ImageIcon botaosair1 = new ImageIcon(getClass().getResource("seta left.png"));
+    ImageIcon botaosair1 = new ImageIcon("botão voltar cópia.png");
     JLabel botaosair = new JLabel(botaosair1);
     
     JLabel score = new JLabel();
@@ -137,7 +137,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         add(setaEsquerda);
 
         
-        botaosair.setBounds(400,400,100,150);
+        botaosair.setBounds(420,500,50,50);
         add(botaosair);
         
         fundo.setBounds(0, 0, 500, 600);
@@ -157,8 +157,6 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
                 matriz.addNewNumbers(gameBoard);
                 moverparabaixo();
             }
-            
-
         });
 
         setaDireita.addMouseListener(new MouseAdapter() {
