@@ -138,6 +138,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         botaoReiniciar.setBounds(250, 500,150, 50);
         add(botaoReiniciar);
 
+        setIconImage(new ImageIcon("download.png").getImage()); 
         
         fundo.setBounds(0, 0, 500, 600);
         fundo.setIcon(back);

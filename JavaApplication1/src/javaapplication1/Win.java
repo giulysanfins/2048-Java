@@ -37,7 +37,7 @@ public class Win extends JFrame {
         
         add(botaosair);
         add(botaoreniciar);
-        
+        setIconImage(new ImageIcon("download.png").getImage()); 
         teladeWin.setBounds(0, 0, 500, 600);
         
         add(teladeWin);

@@ -34,7 +34,8 @@ public class lose extends JFrame {
         
         botaoreniciar.setBounds(210, 460, 250, 85);
         botaoreniciar.setIcon(botreiniciar);
-
+        
+        setIconImage(new ImageIcon("download.png").getImage()); 
         add(botaoreniciar);
         add(botaosair);
         add(teladeloose); //adicionando botoes no painel
