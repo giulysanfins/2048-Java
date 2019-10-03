@@ -85,6 +85,7 @@ public class Game extends HighScore{
                                 highScore = score;
                                 
                             }
+                            setScore();
                         }
                         gameBoard[x - 1][y] = (gameBoard[x - 1][y]) + (gameBoard[x][y]);//soma das posições
                         gameBoard[x][y] = 0;//zera a posição anterior
@@ -139,6 +140,7 @@ public class Game extends HighScore{
                                 highScore = score;
                                 
                             }
+                            setScore();
                         }
                         gameBoard[x + 1][y] = (gameBoard[x + 1][y]) + (gameBoard[x][y]);
                         gameBoard[x][y] = 0;
@@ -192,6 +194,7 @@ public class Game extends HighScore{
                                 highScore = score;
                                 
                             }
+                            setScore();
                         }
                         gameBoard[x][y + 1] = (gameBoard[x][y + 1]) + (gameBoard[x][y]);
                         gameBoard[x][y] = 0;
@@ -241,6 +244,7 @@ public class Game extends HighScore{
                                 highScore = score;
                                 
                             }
+                            setScore();
                         }
                         gameBoard[x][y - 1] = (gameBoard[x][y - 1]) + (gameBoard[x][y]);
                         gameBoard[x][y] = 0;

@@ -113,6 +113,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         score.setBounds(185, 0, 100, 100);
         add(score);
         
+        matriz.loadScore();
         pontuacaoMax.setBounds(400,0,100,100);
         add(pontuacaoMax);
 
@@ -152,8 +153,9 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
                 easteregg.setVisible(true);
                 if(matriz.score > matriz.highScore){
                                 matriz.highScore = matriz.score;
-                                
+                                                matriz.setScore();
                             }
+
                 matriz.score=0;
                 matriz.setGameBoard(gameBoard); //setando a matriz (0)
                 matriz.addNewNumbers(gameBoard); //adicionando novos numeros
@@ -450,6 +452,12 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
                 setVisible(false);
                 dispose();
                 Win winner = new Win();
+                if(matriz.score > matriz.highScore){
+                                matriz.highScore = matriz.score;
+                                 matriz.setScore();
+                            }
+               
+                
                 Numblocos[x][y].setIcon(bloco2048);
             }
         }else{
