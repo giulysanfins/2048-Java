@@ -7,7 +7,7 @@ import java.util.Random; // pro numero random
  *
  * @author 17142837
  */
-public class Game {
+public class Game extends HighScore{
 
     private int[][] gameBoard; //matriz principal
  
@@ -81,6 +81,10 @@ public class Game {
                                                                                                       //flags para evitar casos de erros de somar em 1 movimento
                         if(flagcont==0){//para quando fazer verificar de lose não adicionar score
                             score += gameBoard[x][y] + gameBoard[x - 1][y];
+                            if(score > highScore){
+                                highScore = score;
+                                
+                            }
                         }
                         gameBoard[x - 1][y] = (gameBoard[x - 1][y]) + (gameBoard[x][y]);//soma das posições
                         gameBoard[x][y] = 0;//zera a posição anterior
@@ -131,6 +135,10 @@ public class Game {
                         if(flagcont==0)
                         {
                             score += gameBoard[x][y] + gameBoard[x+1][y];
+                            if(score > highScore){
+                                highScore = score;
+                                
+                            }
                         }
                         gameBoard[x + 1][y] = (gameBoard[x + 1][y]) + (gameBoard[x][y]);
                         gameBoard[x][y] = 0;
@@ -180,6 +188,10 @@ public class Game {
                     } else if (gameBoard[x][y] == gameBoard[x][y + 1] && auxY != y + 1 && auxY != y) {
                         if(flagcont==0){               
                             score+= gameBoard[x][y] + gameBoard[x][y+1];
+                            if(score > highScore){
+                                highScore = score;
+                                
+                            }
                         }
                         gameBoard[x][y + 1] = (gameBoard[x][y + 1]) + (gameBoard[x][y]);
                         gameBoard[x][y] = 0;
@@ -225,6 +237,10 @@ public class Game {
                     } else if (gameBoard[x][y] == gameBoard[x][y - 1] && auxY != y - 1 && auxY != y) {
                         if(flagcont==0){
                             score += gameBoard[x][y] + gameBoard[x][y-1];
+                            if(score > highScore){
+                                highScore = score;
+                                
+                            }
                         }
                         gameBoard[x][y - 1] = (gameBoard[x][y - 1]) + (gameBoard[x][y]);
                         gameBoard[x][y] = 0;

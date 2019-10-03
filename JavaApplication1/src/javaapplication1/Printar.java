@@ -86,6 +86,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     Icon back = new ImageIcon("background.PNG");
     Font font = new Font("Arial", Font.BOLD, 20);
 
+    JLabel pontuacaoMax = new JLabel();
     som som = new som();
 
     public Printar() {
@@ -111,6 +112,9 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
 
         score.setBounds(185, 0, 100, 100);
         add(score);
+        
+        pontuacaoMax.setBounds(400,0,100,100);
+        add(pontuacaoMax);
 
         background.setBounds(95, 135, 300, 300);
         add(background);
@@ -133,6 +137,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         botaoReiniciar.setBounds(250, 500,150, 50);
         add(botaoReiniciar);
 
+        
         fundo.setBounds(0, 0, 500, 600);
         fundo.setIcon(back);
         add(fundo);
@@ -145,7 +150,11 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
                     }
                 }
                 easteregg.setVisible(true);
-                
+                if(matriz.score > matriz.highScore){
+                                matriz.highScore = matriz.score;
+                                
+                            }
+                matriz.score=0;
                 matriz.setGameBoard(gameBoard); //setando a matriz (0)
                 matriz.addNewNumbers(gameBoard); //adicionando novos numeros
                 matriz.addNewNumbers(gameBoard);
@@ -464,6 +473,11 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         score.setText(Integer.toString(matriz.score));
         score.setForeground(Color.WHITE);
         score.setFont(font);
+        
+        pontuacaoMax.setText(Integer.toString(matriz.highScore));
+        pontuacaoMax.setForeground(Color.WHITE);
+        pontuacaoMax.setFont(font);
+        
         matriz.printArray();
 
         for (int y = 0; y < 4; y++) {
