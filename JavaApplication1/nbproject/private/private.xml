@@ -4,9 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/VICTOR/Desktop/2048-Java-master/JavaApplication1/src/javaapplication1/Game.java</file>
+            <file>file:/C:/Users/VICTOR/Desktop/2048-Java-master/JavaApplication1/src/javaapplication1/lose.java</file>
             <file>file:/C:/Users/VICTOR/Desktop/2048-Java-master/JavaApplication1/src/javaapplication1/HighScore.java</file>
             <file>file:/C:/Users/VICTOR/Desktop/2048-Java-master/JavaApplication1/src/javaapplication1/Animation.java</file>
+            <file>file:/C:/Users/VICTOR/Desktop/2048-Java-master/JavaApplication1/src/javaapplication1/Win.java</file>
             <file>file:/C:/Users/VICTOR/Desktop/2048-Java-master/JavaApplication1/src/javaapplication1/Printar.java</file>
+            <file>file:/C:/Users/VICTOR/Desktop/2048-Java-master/JavaApplication1/src/javaapplication1/Janela.java</file>
         </group>
     </open-files>
 </project-private>

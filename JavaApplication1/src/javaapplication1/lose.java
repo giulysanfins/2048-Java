@@ -19,21 +19,33 @@ public class lose extends JFrame {
     Printar matriz = new Printar();
     int[][] matrizaux = new int[4][4];
     Icon loose = new ImageIcon("derrota.png");
-    Icon sair = new ImageIcon("Label verde.png");
+    ImageIcon botsair=new ImageIcon("botsair.PNG");
+    ImageIcon botsair2=new ImageIcon("botsair2.PNG");
+    ImageIcon botreiniciar=new ImageIcon("botreiniciar.PNG");
+    ImageIcon botreiniciar2=new ImageIcon("botreiniciar2.PNG");
 
     public lose() {
         setLocationRelativeTo(null);
         teladeloose.setIcon(loose);
         teladeloose.setBounds(0, 0, 500, 600);
 
-        botaosair.setBounds(50, 465, 140, 71);
-        botaoreniciar.setBounds(210, 465, 230, 71);
+        botaosair.setBounds(45, 460, 155, 85);
+        botaosair.setIcon(botsair);
+        
+        botaoreniciar.setBounds(210, 460, 250, 85);
+        botaoreniciar.setIcon(botreiniciar);
 
         add(botaoreniciar);
         add(botaosair);
         add(teladeloose); //adicionando botoes no painel
 
         botaoreniciar.addMouseListener(new MouseAdapter() { //evento do botao pra reniciar o jogo inteiro
+            public void mouseEntered(MouseEvent e){
+                 botaoreniciar.setIcon(botreiniciar2);
+            }
+            public void mouseExited(MouseEvent e){
+                botaoreniciar.setIcon(botreiniciar);
+            }
             public void mouseClicked(MouseEvent e) {
                 dispose();
                 reiniciar();
@@ -42,6 +54,12 @@ public class lose extends JFrame {
         });
 
         botaosair.addMouseListener(new MouseAdapter() { //evento do botao pra sair do jogo
+            public void mouseEntered(MouseEvent e){
+                botaosair.setIcon(botsair2);
+            }
+            public void mouseExited(MouseEvent e){
+                botaosair.setIcon(botsair);
+            }
             public void mouseClicked(MouseEvent e) {
                 System.exit(0);
             }
