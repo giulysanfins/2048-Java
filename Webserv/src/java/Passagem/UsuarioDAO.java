@@ -20,7 +20,7 @@ import org.json.simple.JSONObject;
 
 /**
  *
- * @author marcelosiedler
+ * @author victorreis
  */
 public class UsuarioDAO {
     /*
