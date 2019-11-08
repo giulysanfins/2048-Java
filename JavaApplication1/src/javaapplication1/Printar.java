@@ -23,10 +23,10 @@ import javax.swing.JPanel;
  */
 public final class Printar extends javax.swing.JFrame implements KeyListener, ActionListener {
 
+    
+    ClientWS Movi=new ClientWS();
+    public StringBuffer movimento = new StringBuffer();
     Game matriz = new Game();
-    
-    HttpExemplo Movi=new HttpExemplo();
-    
     public int[][] gameBoard = matriz.FirstNumber();
     public int[][] matrizAux = new int[4][4];
     Janela janela = new Janela();
@@ -93,10 +93,9 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
 
     JLabel pontuacaoMax = new JLabel();
     som som = new som();
-    public static String movimento=new String();
-        
+
     public Printar() {
-       
+
         setBounds(600, 600, 500, 600);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -107,9 +106,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         setFocusable(true);
         setVisible(true);
         setLocationRelativeTo(null);
-        
-  
-        runMicroService();
+
         background = new JPanel();
         background.setBackground(Color.DARK_GRAY);
         add(background);
@@ -172,10 +169,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
                 movimento(0, vet, 0);//printar na tela novo jogo
             }
         });
-        
-        
 
-        
         setaDireita.addMouseListener(new MouseAdapter() { //evento seta direita
             public void mouseClicked(MouseEvent e) {
                 moverparadireita();
@@ -198,7 +192,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
                 moverparacima();
             }
         });
-        
+
         voltarMovimento.addMouseListener(new MouseAdapter() {//volta o movimento feito
             public void mouseClicked(MouseEvent e) {
                 int vet[] = new int[0];
@@ -231,6 +225,50 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         );
     }
 
+    
+    public void runMicroService() { //funcao chamada na Janela.java PARA rodar a hellokitty - thread
+       
+        Runnable Run;
+        Run = new Runnable() { //thread
+            public void run() {
+                
+                while(true){
+                    try {
+                        movimento=Movi.sendGet();
+                    } catch (Exception ex) {
+                        Logger.getLogger(Printar.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    System.out.println("\nmovimento: "+ movimento);
+                    if(movimento.toString().contains("cima")){
+                        System.out.println("dentro do if cima: "+movimento);
+                        moverparacima();
+                    }else if(movimento.toString().contains("baixo")){
+                        System.out.println("dentro do if baixo: "+movimento);
+                        moverparabaixo();
+                    }else if(movimento.toString().contains("esquerda")){
+                        System.out.println("dentro do if esquerda: "+movimento);
+                        moverparaesquerda();
+                    }
+                    else if(movimento.toString().contains("direita")){
+                        System.out.println("dentro do if direita: "+movimento);
+                        moverparadireita();
+                    }
+                     
+                    else System.out.println("erou!!!");
+                    
+                    
+                    try {
+                        Thread.sleep(1000);
+                    } catch (Exception e) {}
+                }
+            }
+        };
+        Thread MS = new Thread(Run);
+        MS.start();  
+    }
+        
+        
     public void voltarmovimento() {
         for (int x = 0; x < 4; x++) {
             for (int y = 0; y < 4; y++) {
@@ -320,40 +358,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         }
 
     }
-       
-    public void runMicroService() { //funcao chamada na Janela.java PARA rodar a hellokitty - thread
 
-        Runnable Run = new Runnable() { //thread
-         public void run() {
-     
-            while(true){
-                try {
-                    Movi.Exec();
-                } catch (Exception ex) {
-                    Logger.getLogger(Printar.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                movimento=Movi.getMovimento();
-                System.out.println("movimento: "+ movimento);
-                if("cima".equals(movimento)){
-                    System.out.println("dentro do if cima: "+movimento);
-                    moverparacima();
-                }
-                if("baixo".equals(movimento)){
-                    System.out.println("dentro do if baixo: "+movimento);
-                moverparabaixo();
-                }
-                try {
-                Thread.sleep(2000);
-                } catch (Exception e) {
-                } 
-            }
-        }
-        };
-        Thread MS = new Thread(Run);
-        MS.start();  
-        }
-
-    
     public void run() { //funcao chamada na Janela.java PARA rodar a hellokitty - thread
         Runnable Run = new Runnable() {
             @Override
@@ -575,10 +580,5 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
     public void setGameBoard(int[][] gameBoard) {
         this.gameBoard = gameBoard;
     }
-
-
- 
-
-        
 
 }
