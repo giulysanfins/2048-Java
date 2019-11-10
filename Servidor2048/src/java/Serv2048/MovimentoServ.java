@@ -11,6 +11,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 
@@ -32,19 +33,22 @@ public class MovimentoServ extends ArqServ {
     @GET
     @Produces("application/Json")
     public String getJson() {
+        
         String saida=Read();
         Gson g= new Gson();
         String aux=g.toJson(saida);
         Write("vazio");
+        
+        System.out.println(aux);
         return aux;
     }
     
-    @PUT
+    @POST
     @Consumes("application/json")
-    @Path("movimento/alterar")
+    @Path("alterar")
     public void putInserir(String content){
+       //System.out.println(content);
         Write(content);
         Var=content;
     }
-    
 }
