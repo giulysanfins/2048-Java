@@ -151,22 +151,7 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
 
         botaoReiniciar.addMouseListener(new MouseAdapter() { //botao pra reniciar o game
             public void mouseClicked(MouseEvent e) {
-                for (int i = 0; i < 4; i++) {
-                    for (int j = 0; j < 4; j++) { //zerando a matriz 
-                        gameBoard[i][j] = 0;
-                    }
-                }
-                easteregg.setVisible(true);
-                if(matriz.score > matriz.highScore){
-                                matriz.highScore = matriz.score;
-                                                matriz.setScore();
-                            }
-
-                matriz.score=0;
-                matriz.setGameBoard(gameBoard); //setando a matriz (0)
-                matriz.addNewNumbers(gameBoard); //adicionando novos numeros
-                matriz.addNewNumbers(gameBoard);
-                movimento(0, vet, 0);//printar na tela novo jogo
+                moverResetar();
             }
         });
 
@@ -195,15 +180,9 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
 
         voltarMovimento.addMouseListener(new MouseAdapter() {//volta o movimento feito
             public void mouseClicked(MouseEvent e) {
-                int vet[] = new int[0];
-                matriz.setGameBoard(matrizAux);
-                for (int i = 0; i < 4; i++) {
-                    for (int j = 0; j < 4; j++) {
-                        gameBoard[i][j] = matrizAux[i][j]; //passando tudo da matriz pro game
-                    }
-                }
-                movimento(0, vet, 0); //chama para printar os numeros              
+                moverVoltar();
             }
+              
         });
 
         easteregg.addMouseListener(new MouseAdapter() { //evento clicando na hello kitty
@@ -254,6 +233,14 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
                         System.out.println("dentro do if direita: "+movimento);
                         moverparadireita();
                     }
+                   else if(movimento.toString().contains("resetar")){
+                        System.out.println("dentro do if resetar: "+movimento);
+                        moverResetar();
+                    }
+                   else if(movimento.toString().contains("voltar")){
+                        System.out.println("dentro do if direita: "+movimento);
+                        moverVoltar();
+                    }
                      
                     else System.out.println("erou!!!");
                     
@@ -277,6 +264,38 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         }
     }
 
+    public void moverVoltar(){
+                int vet[] = new int[0];
+                matriz.setGameBoard(matrizAux);
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        gameBoard[i][j] = matrizAux[i][j]; //passando tudo da matriz pro game
+                    }
+                }
+                movimento(0, vet, 0); //chama para printar os numeros  
+        
+    }
+    
+    public void moverResetar(){
+                        for (int i = 0; i < 4; i++) {
+                    for (int j = 0; j < 4; j++) { //zerando a matriz 
+                        gameBoard[i][j] = 0;
+                    }
+                }
+                easteregg.setVisible(true);
+                if(matriz.score > matriz.highScore){
+                                matriz.highScore = matriz.score;
+                                                matriz.setScore();
+                            }
+
+                matriz.score=0;
+                matriz.setGameBoard(gameBoard); //setando a matriz (0)
+                matriz.addNewNumbers(gameBoard); //adicionando novos numeros
+                matriz.addNewNumbers(gameBoard);
+                movimento(0, vet, 0);//printar na tela novo jogo
+        
+    }
+    
     public void moverparadireita() {
         matriz.setN(0);//setar N(tamanho do vetor que pega as posicoes)
         gameBoard = matriz.getGameBoard(); //joga a var global gameboard na var local gameboard 

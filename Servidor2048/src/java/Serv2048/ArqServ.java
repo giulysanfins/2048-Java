@@ -25,7 +25,7 @@ import java.io.PrintWriter;
  */
 public class ArqServ {
     
-    String Caminho =new String("C:\\Users\\VICTOR\\Desktop\\arquivo");
+    String Caminho =new String("C:\\Users\\Giuliano\\Desktop\\jogo\\2048-Java\\arq.txt");
  
 
     String Vari =new String();
@@ -36,7 +36,7 @@ public class ArqServ {
     public static String Read(){
         String conteudo = "";
         try {
-            FileReader arq = new FileReader("C:\\Users\\VICTOR\\Desktop\\arquivo\\arq.txt");
+            FileReader arq = new FileReader("C:\\Users\\Giuliano\\Desktop\\jogo\\2048-Java\\arq.txt");
             BufferedReader lerArq = new BufferedReader(arq);
             String linha="";
             try {
@@ -59,7 +59,7 @@ public class ArqServ {
     
     public static boolean Write(String Texto){
         try {
-            FileWriter arq = new FileWriter("C:\\Users\\VICTOR\\Desktop\\arquivo\\arq.txt");
+            FileWriter arq = new FileWriter("C:\\Users\\Giuliano\\Desktop\\jogo\\2048-Java\\arq.txt");
             PrintWriter gravarArq = new PrintWriter(arq);
             gravarArq.println(Texto);
             gravarArq.close();
