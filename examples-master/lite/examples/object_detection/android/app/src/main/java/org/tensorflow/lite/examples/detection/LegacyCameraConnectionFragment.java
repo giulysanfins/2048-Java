@@ -32,9 +32,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import java.io.IOException;
 import java.util.List;
-import org.tensorflow.lite.examples.detection.customview.AutoFitTextureView;
-import org.tensorflow.lite.examples.detection.env.ImageUtils;
-import org.tensorflow.lite.examples.detection.env.Logger;
 
 public class LegacyCameraConnectionFragment extends Fragment {
   private static final Logger LOGGER = new Logger();

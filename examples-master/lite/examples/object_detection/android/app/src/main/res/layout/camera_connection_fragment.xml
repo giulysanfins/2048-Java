@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
 
-    <org.tensorflow.lite.examples.detection.customview.RecognitionScoreView
+    <org.tensorflow.lite.examples.detection.RecognitionScoreView
         android:id="@+id/results"
         android:layout_width="match_parent"
         android:layout_height="112dp"

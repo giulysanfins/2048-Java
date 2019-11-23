@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tensorflow.lite.examples.detection.customview;
+package org.tensorflow.lite.examples.detection;
 
 import android.content.Context;
 import android.util.AttributeSet;

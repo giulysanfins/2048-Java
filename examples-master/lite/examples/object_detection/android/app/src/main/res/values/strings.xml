@@ -3,4 +3,13 @@
     <string name="description_info">Info</string>
     <string name="request_permission">This sample needs camera permission.</string>
     <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+    <string name="_2048_the_game">2048 the game</string>
+    <string name="mover_setas">Mover Setas</string>
+    <string name="mover_com_voz">Mover com Voz</string>
+    <string name="sair">Sair</string>
+    <string name="mover_c_obejto">Mover c/ Obejto</string>
+    <string name="button">Button</string>
+    <string name="reiniciar">Reiniciar</string>
+
+    <string name="voltar">Voltar</string>
 </resources>

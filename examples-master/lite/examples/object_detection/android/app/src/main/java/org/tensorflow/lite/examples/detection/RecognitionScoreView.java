@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-package org.tensorflow.lite.examples.detection.customview;
+package org.tensorflow.lite.examples.detection;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -22,7 +22,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import java.util.List;
-import org.tensorflow.lite.examples.detection.tflite.Classifier.Recognition;
+import org.tensorflow.lite.examples.detection.Classifier.Recognition;
 
 public class RecognitionScoreView extends View implements ResultsView {
   private static final float TEXT_SIZE_DIP = 14;
