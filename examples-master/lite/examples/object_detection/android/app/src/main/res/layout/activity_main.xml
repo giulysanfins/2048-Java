@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fundoTela"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@drawable/telainicial"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/MoverObjeto"
+        android:layout_width="292dp"
+        android:layout_height="74dp"
+        android:background="@android:color/transparent"
+        android:onClick="telaTensor"
+        android:text="@string/mover_c_obejto"
+        android:textColor="@android:color/transparent"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.663" />
+
+    <Button
+        android:id="@+id/Sair"
+        android:layout_width="285dp"
+        android:layout_height="68dp"
+        android:background="@android:color/transparent"
+        android:text="@string/sair"
+        android:textColor="@android:color/transparent"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.911" />
+
+    <Button
+        android:id="@+id/MoverSetas"
+        android:layout_width="302dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="156dp"
+
+        android:background="@android:color/transparent"
+        android:onClick="telaSeta"
+        android:text="@string/mover_setas"
+        android:textColor="@android:color/transparent"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.392" />
+
+    <Button
+        android:id="@+id/MoverVoz"
+        android:layout_width="287dp"
+        android:layout_height="68dp"
+        android:background="@android:color/transparent"
+        android:onClick="telaVoz"
+        android:text="@string/mover_com_voz"
+        android:textColor="@android:color/transparent"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.794" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
