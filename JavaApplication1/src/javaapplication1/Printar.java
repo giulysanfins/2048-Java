@@ -187,18 +187,8 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
 
         easteregg.addMouseListener(new MouseAdapter() { //evento clicando na hello kitty
             public void mouseClicked(MouseEvent e) {
-                System.out.println("COMPILOU");
-                easteregg.setVisible(false);
-                for (int i = 0; i < 4; i++) {
-                    for (int j = 0; j < 4; j++) {
-                        gameBoard[i][j] = 0;//zera a matriz inteira 
-                        gameBoard[2][3] = 1024;//spawna 2 blocos de 2014
-                        gameBoard[2][2] = 1024;
-                        matriz.setGameBoard(gameBoard);
-                        aux = gameBoard[i][j];
-                        verificar(aux, i, j, 0);
-                    }
-                }
+                easter();
+
             }
         }
         );
@@ -241,6 +231,10 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
                         System.out.println("dentro do if direita: "+movimento);
                         moverVoltar();
                     }
+                   else if(movimento.toString().contains("easter")){
+                        System.out.println("dentro do if direita: "+movimento);
+                        easter();
+                    }                   
                      
                     else System.out.println("erou!!!");
                     
@@ -264,6 +258,21 @@ public final class Printar extends javax.swing.JFrame implements KeyListener, Ac
         }
     }
 
+    public void easter(){
+                        easteregg.setVisible(false);
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        gameBoard[i][j] = 0;//zera a matriz inteira 
+                        gameBoard[2][3] = 1024;//spawna 2 blocos de 2014
+                        gameBoard[2][2] = 1024;
+                        matriz.setGameBoard(gameBoard);
+                        aux = gameBoard[i][j];
+                        verificar(aux, i, j, 0);
+                    }
+                }
+        
+    }
+    
     public void moverVoltar(){
                 int vet[] = new int[0];
                 matriz.setGameBoard(matrizAux);
