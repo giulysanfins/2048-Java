@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">2048 Control</string>
+    <string name="button3">Button</string>
+    <string name="button2">Button</string>
+    <string name="cima">Cima</string>
+    <string name="direita">Direita</string>
+    <string name="voltar">Voltar</string>
+    <string name="reiniciar">Reiniciar</string>
+    <string name="button4">Button</string>
+    <string name="button">Button</string>
+    <string name="setas">Setas</string>
+    <string name="voz">Voz</string>
+    <string name="botao">Botao</string>
+    <string name="speak">Speak</string>
+</resources>
