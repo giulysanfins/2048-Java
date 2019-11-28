@@ -1,22 +1,43 @@
 package com.amitshekhar.tflite;
 
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dorvis.androidtensorflowlite.R;
 
 import java.util.concurrent.ExecutionException;
 
-public class TelaSeta extends AppCompatActivity implements View.OnClickListener {
+public class TelaSeta extends AppCompatActivity implements View.OnClickListener, SensorEventListener {
+
+    private TextView textView;
+    private SensorManager sensorManager;
+    private Sensor acelerometro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_telaseta);
+
+        textView = (TextView) findViewById(R.id.lado);
+
+        // Instância da classe sensorManager através do método abaixo
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        // Definindo o tipo de sensor que vou estar utilizando
+        acelerometro = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+
         Button botaoCima = findViewById(R.id.setaCima);
         Button botaoBaixo = findViewById(R.id.setaBaixo);
         Button botaoDireita = findViewById(R.id.setaDireita);
@@ -33,6 +54,51 @@ public class TelaSeta extends AppCompatActivity implements View.OnClickListener 
         botaoVoltar.setOnClickListener(this);
         botaoResetar.setOnClickListener(this);
         botaoEaster.setOnClickListener(this);
+    }
+
+    // Método que inicia a captura do acelerômetro
+    protected void onResume(){
+        super.onResume();
+
+        // Parâmetro SENSOR_DELAY_NORMAL define a velocidade da captura das informações
+        sensorManager.registerListener(this, acelerometro, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    // Método para parar quando não houver interação do usuário, para economizar a bateria
+    protected void onPause(){
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+
+    //Acionando se houver mudança na precisão do sensor do acelerômetro
+    public void onAccuracyChanged(Sensor sensor, int accuracy){
+    }
+
+    //Acionando sempre quando houver na posição do dispositivo identificado pelo sensor
+    public void onSensorChanged(SensorEvent event){
+
+        float x = event.values[0];
+        float y = event.values[1];
+        float z = event.values[2];
+
+        if(y < 0){
+            if(x > 0){
+                textView.setText("CIMA");
+            } else if(x < 0){
+                textView.setText("BAIXO");
+            }
+        } else if(y > 0) {
+            if (x > 0) {
+                textView.setText("ESQUERDA");
+            } else if (x < 0) {
+                textView.setText("DIREITA");
+            }
+            else{
+                if(x==0 || y==0){
+                    textView.setText("NEUTRO");
+                }
+            }
+        }
     }
 
     public void verificarmovimento(String movimento){
