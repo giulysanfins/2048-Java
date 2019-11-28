@@ -83,20 +83,26 @@ public class TelaSeta extends AppCompatActivity implements View.OnClickListener,
 
         if(y < 0){
             if(x > 0){
-                textView.setText("CIMA");
+                 textView.setText("x =" + x + "y = " + y + "z =" +z);
+                 System.out.println("x =" + x + "y = " + y + "z =" +z);
+                //verificarmovimento("esquerda");
             } else if(x < 0){
                 textView.setText("BAIXO");
+                textView.setText("x =" + x + "y = " + y + "z =" +z);
+                System.out.println("x =" + x + "y = " + y + "z =" +z);
+                //verificarmovimento("baixo");
             }
         } else if(y > 0) {
             if (x > 0) {
-                textView.setText("ESQUERDA");
+                textView.setText("CIMA");
+                textView.setText("x =" + x + "y = " + y + "z =" +z);
+                System.out.println("x =" + x + "y = " + y + "z =" +z);
+                // verificarmovimento("cima");
             } else if (x < 0) {
                 textView.setText("DIREITA");
-            }
-            else{
-                if(x==0 || y==0){
-                    textView.setText("NEUTRO");
-                }
+                textView.setText("x =" + x + "y = " + y + "z =" +z);
+                System.out.println("x =" + x + "y = " + y + "z =" +z);
+                // verificarmovimento("direita");
             }
         }
     }
