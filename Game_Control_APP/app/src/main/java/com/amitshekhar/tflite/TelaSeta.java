@@ -87,22 +87,22 @@ public class TelaSeta extends AppCompatActivity implements View.OnClickListener,
         else{
             if(x >= 9 && x <= 10.5 && y >= -3 && y <= 3 && z >= -3 && z <= 3){
                 textView.setText("ESQUERDA");
-                //verificarmovimento("esquerda");
+                verificarmovimento("esquerda");
             }
             else{
                 if(x >= -3 && x <= 3 && y <= 3 && y >= -3 && z >= -12 && z <= -7) {
                     textView.setText("BAIXO");
-                    //verificarmovimento("baixo");
+                    verificarmovimento("baixo");
                 }
                 else{
                     if (x >= -3 && x <= 3 && y <= 3 && y >= -3 && z >= 9 && z <= 10.5) {
                         textView.setText("CIMA");
-                        //verificarmovimento("cima");
+                        verificarmovimento("cima");
                     }
                     else{
                         if (x >= -10.5 && x <= -9 && y >= -3 && y <= 3 && z >= -3 && z <= 2) {
                             textView.setText("DIREITA");
-                            //verificarmovimento("direita");
+                            verificarmovimento("direita");
                         }
                         else{
                             textView.setText("NEUTRO");
