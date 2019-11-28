@@ -81,28 +81,34 @@ public class TelaSeta extends AppCompatActivity implements View.OnClickListener,
         float y = event.values[1];
         float z = event.values[2];
 
-        if(y < 0){
-            if(x > 0){
-                 textView.setText("x =" + x + "y = " + y + "z =" +z);
-                 System.out.println("x =" + x + "y = " + y + "z =" +z);
+        if (x >= -4 && x <= 4 && y <= 12 && y >= 9 && z >= -4 && z <= 4){
+            textView.setText("PARADO");
+        }
+        else{
+            if(x >= 9 && x <= 10.5 && y >= -3 && y <= 3 && z >= -3 && z <= 3){
+                textView.setText("ESQUERDA");
                 //verificarmovimento("esquerda");
-            } else if(x < 0){
-                textView.setText("BAIXO");
-                textView.setText("x =" + x + "y = " + y + "z =" +z);
-                System.out.println("x =" + x + "y = " + y + "z =" +z);
-                //verificarmovimento("baixo");
             }
-        } else if(y > 0) {
-            if (x > 0) {
-                textView.setText("CIMA");
-                textView.setText("x =" + x + "y = " + y + "z =" +z);
-                System.out.println("x =" + x + "y = " + y + "z =" +z);
-                // verificarmovimento("cima");
-            } else if (x < 0) {
-                textView.setText("DIREITA");
-                textView.setText("x =" + x + "y = " + y + "z =" +z);
-                System.out.println("x =" + x + "y = " + y + "z =" +z);
-                // verificarmovimento("direita");
+            else{
+                if(x >= -3 && x <= 3 && y <= 3 && y >= -3 && z >= -12 && z <= -7) {
+                    textView.setText("BAIXO");
+                    //verificarmovimento("baixo");
+                }
+                else{
+                    if (x >= -3 && x <= 3 && y <= 3 && y >= -3 && z >= 9 && z <= 10.5) {
+                        textView.setText("CIMA");
+                        //verificarmovimento("cima");
+                    }
+                    else{
+                        if (x >= -10.5 && x <= -9 && y >= -3 && y <= 3 && z >= -3 && z <= 2) {
+                            textView.setText("DIREITA");
+                            //verificarmovimento("direita");
+                        }
+                        else{
+                            textView.setText("NEUTRO");
+                        }
+                    }
+                }
             }
         }
     }
