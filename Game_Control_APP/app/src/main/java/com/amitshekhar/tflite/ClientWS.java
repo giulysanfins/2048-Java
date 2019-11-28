@@ -28,7 +28,7 @@ public class ClientWS extends AsyncTask<Void,Void,String> {
 
         URL url= null;
         try {
-            url = new URL("http://192.168.0.105:8080/Servidor2048/webresources/Movimento/alterar");
+            url = new URL("http://192.168.43.224:8080/Servidor2048/webresources/Movimento/alterar");
 
 
             // Create the urlConnection

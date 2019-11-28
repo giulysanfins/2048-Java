@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +25,7 @@ public class TelaSeta extends AppCompatActivity implements View.OnClickListener,
     private TextView textView;
     private SensorManager sensorManager;
     private Sensor acelerometro;
-
+    public int varswitch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,8 @@ public class TelaSeta extends AppCompatActivity implements View.OnClickListener,
         Button botaoVoltar = findViewById(R.id.voltar);
         Button botaoResetar = findViewById(R.id.botaoreiniciar);
         Button botaoEaster = findViewById(R.id.botaoEaster);
+        Switch switch1 = findViewById(R.id.switch1);
+        switch1.setOnClickListener(this);
 
 
         botaoCima.setOnClickListener(this);
@@ -54,6 +58,23 @@ public class TelaSeta extends AppCompatActivity implements View.OnClickListener,
         botaoVoltar.setOnClickListener(this);
         botaoResetar.setOnClickListener(this);
         botaoEaster.setOnClickListener(this);
+
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+                if(isChecked == true){
+                    varswitch=1;
+
+                }
+                else{
+                    varswitch=0;
+
+                }
+            }
+        });
+
+
     }
 
     // Método que inicia a captura do acelerômetro
@@ -80,32 +101,30 @@ public class TelaSeta extends AppCompatActivity implements View.OnClickListener,
         float x = event.values[0];
         float y = event.values[1];
         float z = event.values[2];
+        textView.setText("NEUTRO");
+        if (varswitch == 1) {
 
-        if (x >= -4 && x <= 4 && y <= 12 && y >= 9 && z >= -4 && z <= 4){
-            textView.setText("PARADO");
-        }
-        else{
-            if(x >= 9 && x <= 10.5 && y >= -3 && y <= 3 && z >= -3 && z <= 3){
-                textView.setText("ESQUERDA");
-                verificarmovimento("esquerda");
-            }
-            else{
-                if(x >= -3 && x <= 3 && y <= 3 && y >= -3 && z >= -12 && z <= -7) {
-                    textView.setText("BAIXO");
-                    verificarmovimento("baixo");
-                }
-                else{
-                    if (x >= -3 && x <= 3 && y <= 3 && y >= -3 && z >= 9 && z <= 10.5) {
-                        textView.setText("CIMA");
-                        verificarmovimento("cima");
-                    }
-                    else{
-                        if (x >= -10.5 && x <= -9 && y >= -3 && y <= 3 && z >= -3 && z <= 2) {
-                            textView.setText("DIREITA");
-                            verificarmovimento("direita");
-                        }
-                        else{
-                            textView.setText("NEUTRO");
+            if (x >= -4 && x <= 4 && y <= 12 && y >= 9 && z >= -4 && z <= 4) {
+                textView.setText("NEUTRO");
+            } else {
+                if (x >= 9 && x <= 10.5 && y >= -3 && y <= 3 && z >= -3 && z <= 3) {
+                    textView.setText("ESQUERDA");
+                    verificarmovimento("esquerda");
+                } else {
+                    if (x >= -3 && x <= 3 && y <= 3 && y >= -3 && z >= -12 && z <= -7) {
+                        textView.setText("BAIXO");
+                        verificarmovimento("baixo");
+                    } else {
+                        if (x >= -3 && x <= 3 && y <= 3 && y >= -3 && z >= 9 && z <= 10.5) {
+                            textView.setText("CIMA");
+                            verificarmovimento("cima");
+                        } else {
+                            if (x >= -10.5 && x <= -9 && y >= -3 && y <= 3 && z >= -3 && z <= 2) {
+                                textView.setText("DIREITA");
+                                verificarmovimento("direita");
+                            } else {
+                                textView.setText("NEUTRO");
+                            }
                         }
                     }
                 }

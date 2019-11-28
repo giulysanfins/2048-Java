@@ -12,4 +12,6 @@
     <string name="voz">Voz</string>
     <string name="botao">Botao</string>
     <string name="speak">Speak</string>
+    <string name="textview">TextView</string>
+    <string name="acelerometro">Acelerometro</string>
 </resources>
