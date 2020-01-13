@@ -21,7 +21,7 @@
 ![Screenshot_20191128-014152](https://user-images.githubusercontent.com/56207941/69803944-41948e00-11bc-11ea-9313-601c72fa0de2.png)
 
 #### Jogo no computador
-* **Tela inicial do jogo**, há 3 opções no menu, *INICIAR* que iniciará o jogo com sua real funcionalidade, *CRÉDITOS* onde será redicionado para  página onde encontrará o link para nosso git e os produtores do jogo, e por fim, a opção *SAIR*, que fechará o jogo, *Não precisando do aplicativo para jogar o jogo no computador, movimentando pelo teclado*. 
+* **Tela inicial do jogo**, há 3 opções no menu, *INICIAR* que iniciará o jogo com sua real funcionalidade, *CRÉDITOS* onde será redirecionado para  página onde encontrará o link para nosso *GIT* e os produtores do jogo, e por fim, a opção *SAIR*, que fechará o jogo, *Não precisando do aplicativo para jogar o jogo no computador, movimentando pelo teclado*. 
 ![Telainicial](https://user-images.githubusercontent.com/48132623/65742028-d3045880-e0c4-11e9-83fb-03c46b847c3c.png)
 
 ### Pré-requisitos
@@ -49,7 +49,7 @@
   
 ### Desenvolvimento
 * Git clone https://github.com/murilodepa/Jogo-2048-com-Animacao
-* Se realizar "Download ZIP", necessita de um descompactador de arquivos.
+* Se realizar "Download ZIP", necessita de um descompactado de arquivos.
 * Após ter instalado o NetBeans ou outro programa similar, execute-o e selecione "arquivo" e depois "abrir projeto".
 * Abrir arquivo do aplicativo no Android Studio, compilar, gerar o APK e instalar aplicativo no celular.
 * Selecione o diretório que deseja executar onde está salvo o arquivo e depois selecione a opção abrir.
@@ -61,20 +61,20 @@
 * **↑, ←, →, ↓** - Controlam as direções Cima, Esquerda, Direita e Baixo, respectivamente.
 
 ### Controles no Aplicativo
-* Na tela seta, é possível estar pressionando a tecla em relação a direção desejada. E também, pelo acelerômetro do dispostivo, podendo verificar na tela através de um *TextView* as direções conforme vira o celular e movimenta-o, tendo um switch que possibilita ativação ou não do acelerômetro, no canto superior esquerdo. 
+* Na tela seta, é possível estar pressionando a tecla em relação a direção desejada. E também, pelo acelerômetro do dispositivo, podendo verificar na tela através de um *TextView* as direções conforme vira o celular e movimenta-o, tendo um switch que possibilita ativação ou não do acelerômetro, no canto superior esquerdo. 
 
 * Na tela da câmera, é possível realizar as movimentações através de reconhecimento de imagem, onde selecionamos e já definimos quatro imagens para respectivo movimento, abaixo é possível verificar a detecção e reconhecimento do objeto, onde foi realizado o movimento no jogo simultaneamente.
 
-* Detecção do *notebook* e a realização do dovimento para cima: 
+* Detecção do *notebook* e a realização do movimento para cima: 
 ![Screenshot_20191128-084048_2048 Control (1)](https://user-images.githubusercontent.com/56207941/69805135-d00a0f00-11be-11ea-8545-35f4812dc017.jpg)
 
-* Detecção do *wallet* e a realização do dovimento para baixo: 
+* Detecção do *wallet* e a realização do movimento para baixo: 
 ![Screenshot_20191128-084011_2048 Control](https://user-images.githubusercontent.com/56207941/69805236-05166180-11bf-11ea-955f-19d0589aaa7f.jpg)
 
-* Detecção do *iPod* e a realização do dovimento para esquerda:
-![Screenshot_20191128-084106_2048 Control](https://user-images.githubusercontent.com/56207941/69805267-165f6e00-11bf-11ea-9f5d-1869fd623dbb.jpg)
+* Detecção do *iPod* e a realização do movimento para esquerda:
+![image](https://user-images.githubusercontent.com/56207941/72299471-b6723900-363f-11ea-8076-0c2b36929eea.png)
 
-* Detecção do objeto que consideramos um *rubber eraser* e a realização do dovimento para direita:
+* Detecção do objeto que consideramos um *rubber eraser* e a realização do movimento para direita:
 ![Screenshot_20191128-084027_2048 Control](https://user-images.githubusercontent.com/56207941/69805293-25462080-11bf-11ea-88a9-4d10bac2169e.jpg)
 
 ### Interface Do Usuário no computador e aplicativo
@@ -89,7 +89,7 @@
 * Precisa estar instalando e importando no NetBeans, as bibliotecas necessárias do projeto, pode estar sendo encontrado no diretório *Bibliotecas necessárias* neste repositório do GitHub.
  
 ### *Easter Egg* do Jogo
-* Se clicar na *hello kitty* que fica em movimento no programa no computador ou na *hello kitty* central entre as setas na tela de controle manual, aparece uma possibilidade direta de ganhar, aparecendo 2 blocos de 1024, quando somados você ganha!
+* Se clicar na *Hello Kitty* que fica em movimento no programa no computador ou na *Hello Kitty* central entre as setas na tela de controle manual, aparece uma possibilidade direta de ganhar, aparecendo 2 blocos de 1024, quando somados você ganha!
 
 ### Dicas Para Vencer O *JOGO 2048*
 * <a> [Dicas do site *RachaCuca* para vencer o jogo](https://rachacuca.com.br/raciocinio/2048/)
@@ -101,3 +101,4 @@
 
 ### Contribuições
 - Contribuições e possíveis melhorias, no meu ponto de vista são sempre bem-vindas. Bom jogo e divirta-se!
+
