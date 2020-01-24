@@ -65,16 +65,16 @@
 * Na tela da câmera, é possível realizar as movimentações através de reconhecimento de imagem, onde selecionamos e já definimos quatro imagens para respectivo movimento, abaixo é possível verificar a detecção e reconhecimento do objeto, onde foi realizado o movimento no jogo simultaneamente.  
 
 * Detecção do *notebook* e a realização do movimento para cima:  
-![image](https://user-images.githubusercontent.com/56207941/73106626-99a8f180-3eda-11ea-9766-eaa6d5a5cba5.png)
+![image](https://user-images.githubusercontent.com/56207941/73106626-99a8f180-3eda-11ea-9766-eaa6d5a5cba5.png)  
 
-* Detecção do *wallet* e a realização do movimento para baixo: 
-![image](https://user-images.githubusercontent.com/56207941/73106646-a75e7700-3eda-11ea-8d65-fc56a5c3d143.png)
+* Detecção do *wallet* e a realização do movimento para baixo:  
+![image](https://user-images.githubusercontent.com/56207941/73106646-a75e7700-3eda-11ea-8d65-fc56a5c3d143.png)  
 
-* Detecção do *iPod* e a realização do movimento para esquerda:
-![image](https://user-images.githubusercontent.com/56207941/73106672-b47b6600-3eda-11ea-83f8-f45fc0e10d7a.png)
+* Detecção do *iPod* e a realização do movimento para esquerda:  
+![image](https://user-images.githubusercontent.com/56207941/73106672-b47b6600-3eda-11ea-83f8-f45fc0e10d7a.png)  
 
-* Detecção do objeto que consideramos um *rubber eraser* e a realização do movimento para direita:
-![image](https://user-images.githubusercontent.com/56207941/73106697-c230eb80-3eda-11ea-8996-da1ae32615c1.png)
+* Detecção do objeto que consideramos um *rubber eraser* e a realização do movimento para direita:  
+![image](https://user-images.githubusercontent.com/56207941/73106697-c230eb80-3eda-11ea-8996-da1ae32615c1.png)  
 
 ### Interface Do Usuário no computador e aplicativo
 * Contém um Score que mostra a pontuação em tempo de execução;
